@@ -7,7 +7,7 @@
         "${env:PICO_SDK_PATH}/**"
       ],
       "defines": [],
-      "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+      "compilerPath": "${ARM_TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc.exe",
       "cStandard": "gnu17",
       "cppStandard": "gnu++14",
       "intelliSenseMode": "linux-gcc-arm",

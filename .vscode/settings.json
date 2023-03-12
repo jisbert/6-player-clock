@@ -1,5 +1,4 @@
 {
-  "cmake.configureOnOpen": false,
   "cmake.statusbar.advanced": {
     "debug" : {
       "visibility": "hidden"
@@ -11,6 +10,10 @@
                },
     "buildTarget" : {
       "visibility": "hidden"
-               },
+               }
      },
+     "cmake.buildBeforeRun": true,
+     "cmake.configureOnOpen": true,
+     "cmake.generator": "Ninja",
+     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }
