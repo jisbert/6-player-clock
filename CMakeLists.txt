@@ -18,30 +18,30 @@ if (PICO_SDK_VERSION_STRING VERSION_LESS "1.4.0")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.4.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
-project(6-player-countdown-timer C CXX ASM)
+project(6-player-timer C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(6-player-countdown-timer 6-player-countdown-timer.cpp )
+add_executable(6-player-timer 6-player-timer.cpp )
 
-pico_set_program_name(6-player-countdown-timer "6-player-countdown-timer")
-pico_set_program_version(6-player-countdown-timer "0.1")
+pico_set_program_name(6-player-timer "6-player-timer")
+pico_set_program_version(6-player-timer "0.1")
 
-pico_enable_stdio_uart(6-player-countdown-timer 1)
-pico_enable_stdio_usb(6-player-countdown-timer 0)
+pico_enable_stdio_uart(6-player-timer 1)
+pico_enable_stdio_usb(6-player-timer 0)
 
 # Add the standard library to the build
-target_link_libraries(6-player-countdown-timer
+target_link_libraries(6-player-timer
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(6-player-countdown-timer PRIVATE
+target_include_directories(6-player-timer PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
 )
 
-pico_add_extra_outputs(6-player-countdown-timer)
+pico_add_extra_outputs(6-player-timer)
 
