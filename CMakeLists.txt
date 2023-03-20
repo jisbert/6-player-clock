@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 3.25)
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
+# Enable host platform for tests. Conditionally enable when compiler is not Arm CC.
+#set(PICO_PLATFORM "$<IF:$<COMPILE_LANG_AND_ID:CXX,ARMCC>,rp2040,host>")
+#set(PICO_PLATFORM host)
+
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 if (PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
@@ -37,3 +41,4 @@ pico_enable_stdio_usb(6_player_clock 0)
 pico_add_extra_outputs(6_player_clock)
 
 add_subdirectory(buzzer)
+add_subdirectory(tests)
