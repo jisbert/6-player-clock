@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
-#include "buzzer.hpp"
+#include "buzzer.h"
 
 int main() {
   stdio_init_all();
