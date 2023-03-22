@@ -3,10 +3,6 @@ cmake_minimum_required(VERSION 3.25)
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
-# Enable host platform for tests. Conditionally enable when compiler is not Arm CC.
-#set(PICO_PLATFORM "$<IF:$<COMPILE_LANG_AND_ID:CXX,ARMCC>,rp2040,host>")
-#set(PICO_PLATFORM host)
-
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 if (PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
@@ -14,6 +10,12 @@ if (PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
 endif()
 
 project(6_player_clock VERSION 0.1 LANGUAGES C CXX ASM)
+
+# Enable host platform for tests. Conditionally enable when compiler is not Arm CC.
+# I was not able to accomplish this with generator expressions set(PICO_PLATFORM $<IF:$<COMPILE_LANG_AND_ID:CXX,ARMCC>host,rp2040>)
+if(NOT ${CMAKE_ARMCC_COMPILER_ID})
+  set(PICO_PLATFORM host)
+endif()
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
