@@ -1,0 +1,1 @@
+target_sources(6_player_clock_test PRIVATE buzzer_test.cc)
