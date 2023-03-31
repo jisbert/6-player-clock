@@ -1,5 +1,11 @@
-add_library(buzzer buzzer.cc)
+add_library(buzzer_headers INTERFACE)
 
-target_include_directories(buzzer INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(buzzer_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(compiler_flags)
+target_link_libraries(buzzer_headers INTERFACE compiler_flags)
+
+add_library(buzzer INTERFACE)
+
+target_sources(buzzer INTERFACE buzzer.cc)
+
+target_link_libraries(buzzer INTERFACE compiler_flags buzzer_headers)
