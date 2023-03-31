@@ -3,15 +3,20 @@ cmake_minimum_required(VERSION 3.25)
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
+# Enable tests
+option(ENABLE_TESTS "Enable tests" ON)
+
 # Enable host platform for tests.
 # Must come before importing pico sdk.
 # TODO: conditionally enable when compiler is not Arm CC.
 #       Not sure about how to accomplish this, cause CMAKE_<LANG>_COMPILER_ID is populated only after project and this must come before
-set(PICO_PLATFORM host CACHE STRING "Plataform type")
+if(ENABLE_TESTS)
+  set(PICO_PLATFORM host CACHE STRING "Plataform type")
+endif()
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
-if (PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
+if(PICO_SDK_VERSION_STRING VERSION_LESS "1.5.0")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.5.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
@@ -60,4 +65,6 @@ pico_enable_stdio_usb(6_player_clock 0)
 # Generate elf files
 pico_add_extra_outputs(6_player_clock)
 
-add_subdirectory(tests)
+if(ENABLE_TESTS)
+  add_subdirectory(tests)
+endif()
