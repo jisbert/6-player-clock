@@ -54,6 +54,12 @@ target_link_libraries(6_player_clock
   headers
   sources
 )
+target_link_libraries(6_player_clock
+  compiler_flags
+  pico_stdlib
+  headers
+  sources
+)
 
 pico_set_program_name(6_player_clock "6_player_clock")
 pico_set_program_version(6_player_clock "0.1")
