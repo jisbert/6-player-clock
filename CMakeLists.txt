@@ -25,7 +25,12 @@ add_executable(6_player_clock 6_player_clock.cc)
 add_library(compiler_flags INTERFACE)
 target_compile_definitions(compiler_flags INTERFACE c_std_11 cxx_std_17)
 
-target_link_libraries(6_player_clock compiler_flags pico_stdlib buzzer)
+target_link_libraries(6_player_clock
+  compiler_flags
+  pico_stdlib
+  button
+  buzzer
+)
 
 target_include_directories(6_player_clock PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
@@ -42,5 +47,6 @@ pico_enable_stdio_usb(6_player_clock 0)
 # Generate elf files
 pico_add_extra_outputs(6_player_clock)
 
+add_subdirectory(button)
 add_subdirectory(buzzer)
 add_subdirectory(tests)
