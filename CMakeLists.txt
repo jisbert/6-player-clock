@@ -25,20 +25,23 @@ target_compile_definitions(compiler_flags INTERFACE c_std_11 cxx_std_17)
 
 add_library(6_player_clock_headers INTERFACE)
 target_include_directories(6_player_clock_headers INTERFACE
-  ${CMAKE_CURRENT_SOURCE_DIR}/button/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/buzzer/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/button
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/buzzer
 )
+target_link_libraries(6_player_clock_headers INTERFACE compiler_flags)
 
 add_library(6_player_clock_sources INTERFACE)
 target_sources(6_player_clock_sources INTERFACE
-  button/button_controller.cc
-  buzzer/buzzer.cc
+  src/button/button_controller.cc
+  src/buzzer/buzzer.cc
 )
+target_link_libraries(6_player_clock_sources INTERFACE compiler_flags)
 
-add_executable(6_player_clock 6_player_clock.cc)
+add_executable(6_player_clock src/6_player_clock.cc)
 target_include_directories(6_player_clock PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
+  ${CMAKE_CURRENT_LIST_DIR}/src
 )
 target_link_libraries(6_player_clock
   compiler_flags
