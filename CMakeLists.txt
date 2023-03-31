@@ -46,7 +46,6 @@ add_executable(6_player_clock src/app.cc)
 target_include_directories(6_player_clock PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
-  ${CMAKE_CURRENT_LIST_DIR}/src
 )
 target_link_libraries(6_player_clock
   compiler_flags
