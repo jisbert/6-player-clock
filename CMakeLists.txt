@@ -23,21 +23,21 @@ pico_sdk_init()
 add_library(compiler_flags INTERFACE)
 target_compile_definitions(compiler_flags INTERFACE c_std_11 cxx_std_17)
 
-add_library(6_player_clock_headers INTERFACE)
-target_include_directories(6_player_clock_headers INTERFACE
+add_library(headers INTERFACE)
+target_include_directories(headers INTERFACE
   ${CMAKE_CURRENT_SOURCE_DIR}/include/button
   ${CMAKE_CURRENT_SOURCE_DIR}/include/buzzer
 )
-target_link_libraries(6_player_clock_headers INTERFACE compiler_flags)
+target_link_libraries(headers INTERFACE compiler_flags)
 
-add_library(6_player_clock_sources INTERFACE)
-target_sources(6_player_clock_sources INTERFACE
+add_library(sources INTERFACE)
+target_sources(sources INTERFACE
   src/button/button_controller.cc
   src/buzzer/buzzer.cc
 )
-target_link_libraries(6_player_clock_sources INTERFACE compiler_flags)
+target_link_libraries(sources INTERFACE compiler_flags)
 
-add_executable(6_player_clock src/6_player_clock.cc)
+add_executable(6_player_clock src/app.cc)
 target_include_directories(6_player_clock PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
@@ -46,8 +46,8 @@ target_include_directories(6_player_clock PRIVATE
 target_link_libraries(6_player_clock
   compiler_flags
   pico_stdlib
-  6_player_clock_headers
-  6_player_clock_sources
+  headers
+  sources
 )
 
 pico_set_program_name(6_player_clock "6_player_clock")
