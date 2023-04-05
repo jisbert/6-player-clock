@@ -1,5 +1,11 @@
-#include "button_handler_mock.h"
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
-void ButtonHandlerMock::handlePressed(ButtonEvent event) {
-  mock().actualCall("handlePressed");
+#include "./button_event.h"
+#include "./button_handler_mock.h"
+
+void ButtonHandlerMock::HandlePressed(ButtonEvent event) {
+  mock().actualCall("HandlePressed");
 }

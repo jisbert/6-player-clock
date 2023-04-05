@@ -1,8 +1,12 @@
-#include "CppUTest/TestHarness.h"
-#include "buzzer.h"
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
-TEST_GROUP(Buzzer)
-{
+#include "CppUTest/TestHarness.h"
+#include "./buzzer.h"
+
+TEST_GROUP(Buzzer) {
   Buzzer* buzzer;
 
   void setup() {
@@ -17,8 +21,8 @@ TEST_GROUP(Buzzer)
 TEST(Buzzer, General) {
   CHECK(0 != buzzer);
   CHECK(true);
-  CHECK_EQUAL(1,1);
-  LONGS_EQUAL(1,1);
+  CHECK_EQUAL(1, 1);
+  LONGS_EQUAL(1, 1);
   DOUBLES_EQUAL(1.000, 1.001, .01);
   STRCMP_EQUAL("hello", "hello");
   FAIL("The prior tests pass, but this one doesn't");

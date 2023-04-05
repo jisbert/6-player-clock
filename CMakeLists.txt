@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 
+# Use cpplint
+set(CMAKE_CXX_CPPLINT "cpplint")
+
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
@@ -41,6 +44,8 @@ target_link_libraries(headers INTERFACE compiler_flags)
 add_library(sources INTERFACE)
 target_sources(sources INTERFACE
   src/button/button_controller.cc
+  src/button/button_event.cc
+  src/button/button_handler.cc
   src/buzzer/buzzer.cc
 )
 target_link_libraries(sources INTERFACE compiler_flags)

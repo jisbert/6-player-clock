@@ -1,7 +1,10 @@
-#include "buzzer.h"
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
-Buzzer::Buzzer(int new_buzzer_pin): buzzer_pin(new_buzzer_pin) {}
+#include "./buzzer.h"
 
-void Buzzer::beep() {
+Buzzer::Buzzer(unsigned int gpio): gpio_(gpio) {}
 
-}
+void Buzzer::Beep() {}

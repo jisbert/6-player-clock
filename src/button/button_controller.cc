@@ -1,7 +1,13 @@
-#include "button_controller.h"
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
-ButtonController::ButtonController(unsigned int new_gpio_mask): gpio_mask(new_gpio_mask) {}
+#include "./button_controller.h"
+#include "./button_handler.h"
 
-void ButtonController::setHandler(ButtonHandler *handler) {
-    this->handler = handler;
+ButtonController::ButtonController(unsigned int gpio): gpio_(gpio) {}
+
+void ButtonController::handler(ButtonHandler *handler) {
+  this->handler_ = handler;
 }
