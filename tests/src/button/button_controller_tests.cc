@@ -1,11 +1,16 @@
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 #include "CppUTest/TestHarness.h"
-#include "button_controller.h"
-#include "button_handler_mock.h"
+#include "./button_controller.h"
+#include "./button_handler.h"
+#include "./button_handler_mock.h"
 
 const unsigned int kGpio = 1;
 
-TEST_GROUP(ButtonController)
-{
+TEST_GROUP(ButtonController) {
   ButtonController* controller;
   ButtonHandler* handler;
 
@@ -21,6 +26,5 @@ TEST_GROUP(ButtonController)
   }
 };
 
-TEST(ButtonController, General)
-{
+TEST(ButtonController, General) {
 }

@@ -1,8 +1,14 @@
-#include "CppUTest/TestHarness.h"
-#include "button_handler_mock.h"
+/* Copyright (c) 2023 Jose Gisbert
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
-TEST_GROUP(ButtonHandler)
-{
+#include "CppUTest/TestHarness.h"
+#include "./button_event.h"
+#include "./button_handler.h"
+#include "./button_handler_mock.h"
+
+TEST_GROUP(ButtonHandler) {
   ButtonHandler* button;
 
   void setup() {
@@ -14,8 +20,7 @@ TEST_GROUP(ButtonHandler)
   }
 };
 
-TEST(ButtonHandler, General)
-{
+TEST(ButtonHandler, General) {
   mock().expectOneCall("HandlePressed");
   ButtonEvent event = 1;
   button->HandlePressed(event);
