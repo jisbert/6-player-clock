@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install lcov and cpplint
+      run: apt install lcov cpplint
+
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -19,7 +22,7 @@ jobs:
       id: cache-pico-sdk
       uses: actions/cache@v3
       with:
-        path: lib
+        path: ${{ github.workspace }}/lib
         key: ${{ runner.os }}-build-pico-sdk-${{ env.PICO_SDK_VERSION }}
         restore-keys: |
           ${{ runner.os }}-build-pico-sdk-
