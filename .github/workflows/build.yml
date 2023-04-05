@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Install lcov and cpplint
-      run: apt install lcov cpplint
+      run: sudo apt install lcov cpplint
 
     - name: Checkout repository
       uses: actions/checkout@v3
