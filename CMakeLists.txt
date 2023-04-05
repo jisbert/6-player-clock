@@ -6,11 +6,14 @@ set(PICO_BOARD pico CACHE STRING "Board type")
 # Enable tests
 option(ENABLE_TESTS "Enable tests" ON)
 
+# Enable coverage
+option(ENABLE_COVERAGE "Enable coverage")
+
 # Enable host platform for tests.
 # Must come before importing pico sdk.
 # TODO: conditionally enable when compiler is not Arm CC.
 #       Not sure about how to accomplish this, cause CMAKE_<LANG>_COMPILER_ID is populated only after project and this must come before
-if(ENABLE_TESTS)
+if(ENABLE_TESTS OR ENABLE_COVERAGE)
   set(PICO_PLATFORM host CACHE STRING "Plataform type")
 endif()
 
@@ -65,6 +68,10 @@ pico_enable_stdio_usb(6_player_clock 0)
 # Generate elf files
 pico_add_extra_outputs(6_player_clock)
 
-if(ENABLE_TESTS)
+if(ENABLE_TESTS OR ENABLE_COVERAGE)
+  if (ENABLE_COVERAGE)
+    set(CMAKE_MODULE_PATH cmake ${CMAKE_MODULE_PATH})
+    include(CodeCoverage)
+  endif()
   add_subdirectory(tests)
 endif()
