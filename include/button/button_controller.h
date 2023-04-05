@@ -3,11 +3,11 @@
 #include "button_handler.h"
 
 class ButtonController {
-    const unsigned int gpio_mask;
-    ButtonHandler *handler;
+  const unsigned int gpio_;
+  ButtonHandler *handler_;
 public:
-    ButtonController(unsigned int new_gpio_mask);
-    void setHandler(ButtonHandler *handler);
+  ButtonController(unsigned int gpio);
+  void handler(ButtonHandler *handler);
 };
 
 #endif

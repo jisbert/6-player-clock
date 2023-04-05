@@ -16,7 +16,7 @@ TEST_GROUP(ButtonHandler)
 
 TEST(ButtonHandler, General)
 {
-  mock().expectOneCall("handlePressed");
-  ButtonEvent event;
-  button->handlePressed(event);
+  mock().expectOneCall("HandlePressed");
+  ButtonEvent event = 1;
+  button->HandlePressed(event);
 }

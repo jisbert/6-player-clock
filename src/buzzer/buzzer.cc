@@ -1,7 +1,7 @@
 #include "buzzer.h"
 
-Buzzer::Buzzer(int new_buzzer_pin): buzzer_pin(new_buzzer_pin) {}
+Buzzer::Buzzer(unsigned int gpio): gpio_(gpio) {}
 
-void Buzzer::beep() {
+void Buzzer::Beep() {
 
 }

@@ -4,7 +4,7 @@
 #include "button_handler.h"
 
 class ButtonHandlerMock: public ButtonHandler {
-  void handlePressed(ButtonEvent event) final;
+  void HandlePressed(ButtonEvent event) final;
 };
 
 #endif

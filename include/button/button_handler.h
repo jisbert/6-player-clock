@@ -3,8 +3,8 @@
 #include "button_event.h"
 
 class ButtonHandler {
-    public:
-        virtual void handlePressed(ButtonEvent event) =0;
+  public:
+    virtual void HandlePressed(ButtonEvent event);
 };
 
 #endif

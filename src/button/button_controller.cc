@@ -1,7 +1,7 @@
 #include "button_controller.h"
 
-ButtonController::ButtonController(unsigned int new_gpio_mask): gpio_mask(new_gpio_mask) {}
+ButtonController::ButtonController(unsigned int gpio): gpio_(gpio) {}
 
-void ButtonController::setHandler(ButtonHandler *handler) {
-    this->handler = handler;
+void ButtonController::handler(ButtonHandler *handler) {
+  this->handler_ = handler;
 }
