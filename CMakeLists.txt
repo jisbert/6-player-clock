@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 
+# Use cpplint
+set(CMAKE_CXX_CPPLINT "cpplint")
+
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
