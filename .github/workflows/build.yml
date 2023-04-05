@@ -16,6 +16,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Cache Raspberry Pi Pico C/C++ SDK
+      id: cache-pico-sdk
       uses: actions/cache@v3
       with:
         path: lib
@@ -24,7 +25,8 @@ jobs:
           ${{ runner.os }}-build-pico-sdk-
           ${{ runner.os }}-
 
-    - name: Checkout Pico SDK repository
+    - if: ${{ steps.cache-pico-sdk.outputs.cache-hit != 'true' }}
+      name: Checkout Pico SDK repository
       uses: actions/checkout@v3
       with:
         repository: raspberrypi/pico-sdk
