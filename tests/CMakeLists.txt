@@ -17,7 +17,7 @@ if(ENABLE_COVERAGE)
     NAME coverage
     EXECUTABLE tests
     DEPENDENCIES tests
-    BASE_DIRECTORY coverage
+    BASE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     EXCLUDE tests/mocks/*
   )
 endif()
