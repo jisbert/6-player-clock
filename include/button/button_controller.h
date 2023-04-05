@@ -1,3 +1,5 @@
+#ifndef SIX_PLAYER_CLOCK_BUTTON_BUTTON_CONTROLLER_H_
+#define SIX_PLAYER_CLOCK_BUTTON_BUTTON_CONTROLLER_H_
 #include "button_handler.h"
 
 class ButtonController {
@@ -7,3 +9,5 @@ public:
     ButtonController(unsigned int new_gpio_mask);
     void setHandler(ButtonHandler *handler);
 };
+
+#endif
