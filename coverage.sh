@@ -1,4 +1,5 @@
-lcov -d build/tests -z
-build/tests/tests.exe
-lcov -d build/tests -c -o build/coverage/coverage.info
-genhtml build/coverage/coverage.info -o build/coverage
+cd build
+lcov -d . -b tests -z
+tests/tests.exe
+lcov -d . -b tests -c -o coverage.info
+genhtml --demangle-cpp -o coverage coverage.info
