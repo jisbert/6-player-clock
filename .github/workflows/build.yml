@@ -3,8 +3,7 @@ name: CMake
 on: [push]
 
 env:
-  PICO_SDK_RELATIVE_PATH: lib/pico/pico-sdk
-  PICO_SDK_PATH: ${{ github.workspace }}/lib/pico/pico-sdk
+  PICO_SDK_PATH: ~/pico-sdk
   PICO_SDK_VERSION: '1.5.0'
 
 jobs:
@@ -22,7 +21,7 @@ jobs:
       id: cache-pico-sdk
       uses: actions/cache@v3
       with:
-        path: ${{ github.workspace }}/lib
+        path: ${{ env.PICO_SDK_PATH }}
         key: ${{ runner.os }}-build-pico-sdk-${{ env.PICO_SDK_VERSION }}
         restore-keys: |
           ${{ runner.os }}-build-pico-sdk-
@@ -34,7 +33,7 @@ jobs:
       with:
         repository: raspberrypi/pico-sdk
         ref: ${{ env.PICO_SDK_VERSION }}
-        path: ${{ env.PICO_SDK_RELATIVE_PATH }}
+        path: ${{ env.PICO_SDK_PATH }}
         submodules: recursive
 
     - name: Configure CMake
