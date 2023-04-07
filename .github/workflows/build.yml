@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
     steps:
     - name: Cache Raspberry Pi Pico C/C++ SDK
       id: cache-pico-sdk
@@ -31,16 +34,11 @@ jobs:
         path: ${{ env.PICO_SDK_RELATIVE_PATH }}
         submodules: recursive
 
-    - name: Install dependencies
+    - name: Install APT dependencies
       run: sudo apt install lcov cpplint cpputest gcc-arm-none-eabi
-
-    - name: Checkout repository
-      uses: actions/checkout@v3
 
     - name: Configure CMake
       run: cmake -B ${{ github.workspace }}/build -DENABLE_COVERAGE=ON
-      env:
-        PICO_TOOLCHAIN_PATH: bin
 
     - name: Build Tests and Coverage
       run: cmake --build ${{ github.workspace }}/build --target coverage
