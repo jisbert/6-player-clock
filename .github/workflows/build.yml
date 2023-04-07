@@ -11,10 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    steps:
     - name: Cache Raspberry Pi Pico C/C++ SDK
       id: cache-pico-sdk
       uses: actions/cache@v3
