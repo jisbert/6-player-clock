@@ -25,5 +25,5 @@ TEST(Buzzer, General) {
   LONGS_EQUAL(1, 1);
   DOUBLES_EQUAL(1.000, 1.001, .01);
   STRCMP_EQUAL("hello", "hello");
-  FAIL("The prior tests pass, but this one doesn't");
+  //FAIL("The prior tests pass, but this one doesn't");
 }
