@@ -9,7 +9,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/jisbert/6-player-clock:1.0.0
+    container: ghcr.io/jisbert/6-player-clock
 
     steps:
     - name: Checkout repository
