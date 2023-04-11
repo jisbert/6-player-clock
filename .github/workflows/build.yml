@@ -11,14 +11,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Configure CMake for Coverage
-      run: cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
+    - name: Coverage report
+      run: |
+        cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
+        cmake --build ${{ github.workspace }}/coverage --target coverage
 
-    - name: Build Coverage (runs tests)
-      run: cmake --build ${{ github.workspace }}/coverage --target coverage
-
-    - name: Configure CMake for Binary Distribution
-      run: cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
-
-    - name: Build Binary Distribution (cross-compile)
-      run: cmake --build ${{ github.workspace }}/build --target 6_player_clock
+    - name: Binaries
+      run: |
+        cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
+        cmake --build ${{ github.workspace }}/build --target 6_player_clock
