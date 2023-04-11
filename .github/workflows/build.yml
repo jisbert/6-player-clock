@@ -30,12 +30,10 @@ jobs:
       run: |
         cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
         cmake --build ${{ github.workspace }}/build --target 6_player_clock
-        cp ${{ github.workspace }}/build/*.elf ${{ github.workspace }}/build/*.uf2 build
+        cp ${{ github.workspace }}/build/*.elf build
 
     - name: Archive production binaries
       uses: actions/upload-artifact@v3
       with:
         name: production-binaries
-        path: |
-          build/*.elf
-          build/*.uf2
+        path: build/*.elf
