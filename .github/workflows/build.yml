@@ -1,44 +1,24 @@
-name: CMake
+name: Build
 
 on: [push]
-
-env:
-  PICO_SDK_RELATIVE_PATH: pico-sdk
-  PICO_SDK_PATH: ${{ github.workspace }}/pico-sdk
-  PICO_SDK_VERSION: '1.5.0'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ghcr.io/jisbert/pico-sdk
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Cache Raspberry Pi Pico C/C++ SDK
-      id: cache-pico-sdk
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.PICO_SDK_RELATIVE_PATH }}
-        key: ${{ runner.os }}-build-pico-sdk-${{ env.PICO_SDK_VERSION }}
-        restore-keys: |
-          ${{ runner.os }}-build-pico-sdk-
-          ${{ runner.os }}-
+    - name: Configure CMake for Coverage
+      run: cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
 
-    - if: ${{ steps.cache-pico-sdk.outputs.cache-hit != 'true' }}
-      name: Checkout Pico SDK repository
-      uses: actions/checkout@v3
-      with:
-        repository: raspberrypi/pico-sdk
-        ref: ${{ env.PICO_SDK_VERSION }}
-        path: ${{ env.PICO_SDK_RELATIVE_PATH }}
-        submodules: recursive
+    - name: Build Coverage (runs tests)
+      run: cmake --build ${{ github.workspace }}/coverage --target coverage
 
-    - name: Install APT dependencies
-      run: sudo apt install lcov cpplint cpputest gcc-arm-none-eabi
+    - name: Configure CMake for Binary Distribution
+      run: cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
 
-    - name: Configure CMake
-      run: cmake -B ${{ github.workspace }}/build -DENABLE_COVERAGE=ON
-
-    - name: Build Tests and Coverage
-      run: cmake --build ${{ github.workspace }}/build --target coverage
+    - name: Build Binary Distribution (cross-compile)
+      run: cmake --build ${{ github.workspace }}/build --target 6_player_clock

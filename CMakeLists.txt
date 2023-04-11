@@ -18,6 +18,7 @@ option(ENABLE_COVERAGE "Enable coverage")
 #       Not sure about how to accomplish this, cause CMAKE_<LANG>_COMPILER_ID is populated only after project and this must come before
 if(ENABLE_TESTS OR ENABLE_COVERAGE)
   set(PICO_PLATFORM host CACHE STRING "Plataform type")
+  set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
