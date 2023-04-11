@@ -1,6 +1,6 @@
 name: Build
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -11,14 +11,32 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Configure CMake for Coverage
-      run: cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
+    - name: Code coverage report
+      run: |
+        cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
+        cmake --build ${{ github.workspace }}/coverage --target coverage
+        cp -r ${{ github.workspace }}/coverage/coverage coverage
 
-    - name: Build Coverage (runs tests)
-      run: cmake --build ${{ github.workspace }}/coverage --target coverage
+    - name: Archive code coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: |
+          coverage
+          !coverage/src
+          !coverage/tests
 
-    - name: Configure CMake for Binary Distribution
-      run: cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
+    - name: Production binaries
+      run: |
+        cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
+        cmake --build ${{ github.workspace }}/build --target 6_player_clock
+        mkdir build
+        cp ${{ github.workspace }}/build/*.elf ${{ github.workspace }}/build/*.uf2 build
 
-    - name: Build Binary Distribution (cross-compile)
-      run: cmake --build ${{ github.workspace }}/build --target 6_player_clock
+    - name: Archive production binaries
+      uses: actions/upload-artifact@v3
+      with:
+        name: production-binaries
+        path: |
+          build/*.elf
+          build/*.uf2
