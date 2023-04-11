@@ -2,10 +2,6 @@ name: CMake
 
 on: [push]
 
-env:
-  PICO_SDK_PATH: /pico-sdk
-  PICO_SDK_VERSION: '1.5.0'
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,9 +11,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Configure CMake
-      run: cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON -GNinja -DCMAKE_MAKE_PROGRAM=/usr/lib/ninja-build/bin/ninja
-      # cmake -S . -B build -DENABLE_TESTS=OFF -DENABLE_COVERAGE=OFF -GNinja -DCMAKE_MAKE_PROGRAM=/usr/lib/ninja-build/bin/ninja
+    - name: Configure CMake for Coverage
+      run: cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
 
-    - name: Build Tests and Coverage
+    - name: Build Coverage (runs tests)
       run: cmake --build ${{ github.workspace }}/coverage --target coverage
