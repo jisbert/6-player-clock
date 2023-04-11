@@ -16,3 +16,9 @@ jobs:
 
     - name: Build Coverage (runs tests)
       run: cmake --build ${{ github.workspace }}/coverage --target coverage
+
+    - name: Configure CMake for Binary Distribution
+      run: cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
+
+    - name: Build Binary Distribution (cross-compile)
+      run: cmake --build ${{ github.workspace }}/build --target 6_player_clock
