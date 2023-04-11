@@ -15,25 +15,27 @@ jobs:
       run: |
         cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
         cmake --build ${{ github.workspace }}/coverage --target coverage
+        cp -r ${{ github.workspace }}/coverage coverage
 
     - name: Archive code coverage report
       uses: actions/upload-artifact@v3
       with:
         name: code-coverage-report
         path: |
-          ${{ github.workspace }}/coverage/coverage
-          !${{ github.workspace }}/coverage/coverage/src
-          !${{ github.workspace }}/coverage/coverage/tests
+          coverage/coverage
+          !coverage/coverage/src
+          !coverage/coverage/tests
 
     - name: Production binaries
       run: |
         cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
         cmake --build ${{ github.workspace }}/build --target 6_player_clock
+        cp ${{ github.workspace }}/build/*.elf ${{ github.workspace }}/build/*.uf2 build
 
     - name: Archive production binaries
       uses: actions/upload-artifact@v3
       with:
         name: production-binaries
         path: |
-          ${{ github.workspace }}/build/*.elf
-          ${{ github.workspace }}/build/*.uf2
+          build/*.elf
+          build/*.uf2
