@@ -12,7 +12,7 @@
 # $ chmod +x coverage.sh
 # $ ./coverage.sh
 
-cd coverage
+cd coverage || exit
 lcov -d . -b tests -z
 tests/tests.exe
 lcov -d . -b tests -c -o coverage.info
