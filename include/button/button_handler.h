@@ -13,4 +13,4 @@ class ButtonHandler {
   virtual void HandlePressed(ButtonEvent event);
 };
 
-#endif // BUTTON_BUTTON_HANDLER_H_
+#endif  // BUTTON_BUTTON_HANDLER_H_

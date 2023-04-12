@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef SIX_PLAYER_CLOCK_BUTTON_BUTTON_EVENT_H_
-#define SIX_PLAYER_CLOCK_BUTTON_BUTTON_EVENT_H_
+#ifndef BUTTON_BUTTON_EVENT_H_
+#define BUTTON_BUTTON_EVENT_H_
 
 class ButtonEvent {
   const unsigned int gpio_;
-  public:
-    ButtonEvent(unsigned int gpio);
-    unsigned int gpio();
+ public:
+  explicit ButtonEvent(unsigned int gpio);
+  unsigned int gpio();
 };
 
-#endif
+#endif  // BUTTON_BUTTON_EVENT_H_
