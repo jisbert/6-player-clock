@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef SIX_PLAYER_CLOCK_BUTTON_BUTTON_HANDLER_H_
-#define SIX_PLAYER_CLOCK_BUTTON_BUTTON_HANDLER_H_
+#ifndef BUTTON_BUTTON_HANDLER_H_
+#define BUTTON_BUTTON_HANDLER_H_
 
 #include "button/button_event.h"
 
 class ButtonHandler {
-  public:
-    virtual void HandlePressed(ButtonEvent event);
+ public:
+  virtual void HandlePressed(ButtonEvent event);
 };
 
-#endif
+#endif // BUTTON_BUTTON_HANDLER_H_

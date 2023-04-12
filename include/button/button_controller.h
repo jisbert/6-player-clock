@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef SIX_PLAYER_CLOCK_BUTTON_BUTTON_CONTROLLER_H_
-#define SIX_PLAYER_CLOCK_BUTTON_BUTTON_CONTROLLER_H_
+#ifndef BUTTON_BUTTON_CONTROLLER_H_
+#define BUTTON_BUTTON_CONTROLLER_H_
 
 #include "button/button_handler.h"
 
 class ButtonController {
   const unsigned int gpio_;
   ButtonHandler *handler_;
-public:
-  ButtonController(unsigned int gpio);
+ public:
+  explicit ButtonController(unsigned int gpio);
   void handler(ButtonHandler *handler);
 };
 
-#endif
+#endif // BUTTON_BUTTON_CONTROLLER_H_
