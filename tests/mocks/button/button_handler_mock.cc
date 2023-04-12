@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "./button_event.h"
-#include "./button_handler_mock.h"
+#include "button/button_handler_mock.h"
+
+#include "button/button_event.h"
 
 void ButtonHandlerMock::HandlePressed(ButtonEvent event) {
   mock().actualCall("HandlePressed");

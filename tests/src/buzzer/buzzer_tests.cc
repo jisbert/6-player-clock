@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "buzzer/buzzer.h"
+
 #include "CppUTest/TestHarness.h"
-#include "./buzzer.h"
 
 TEST_GROUP(Buzzer) {
   Buzzer* buzzer;
@@ -25,5 +26,5 @@ TEST(Buzzer, General) {
   LONGS_EQUAL(10, 10);
   DOUBLES_EQUAL(1.000, 1.001, .01);
   STRCMP_EQUAL("hello", "hello");
-  //FAIL("The prior tests pass, but this one doesn't");
+  // FAIL("The prior tests pass, but this one doesn't");
 }

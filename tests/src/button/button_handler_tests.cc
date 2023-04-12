@@ -3,10 +3,12 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "button/button_handler.h"
+
 #include "CppUTest/TestHarness.h"
-#include "./button_event.h"
-#include "./button_handler.h"
-#include "./button_handler_mock.h"
+
+#include "button/button_event.h"
+#include "button/button_handler_mock.h"
 
 TEST_GROUP(ButtonHandler) {
   ButtonHandler* button;

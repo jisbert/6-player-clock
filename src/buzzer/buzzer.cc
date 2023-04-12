@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "./buzzer.h"
+#include "buzzer/buzzer.h"
 
 Buzzer::Buzzer(unsigned int gpio): gpio_(gpio) {}
 

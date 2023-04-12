@@ -37,8 +37,7 @@ target_compile_definitions(compiler_flags INTERFACE c_std_11 cxx_std_17)
 
 add_library(headers INTERFACE)
 target_include_directories(headers INTERFACE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/button
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/buzzer
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_link_libraries(headers INTERFACE compiler_flags)
 

@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "./button_controller.h"
-#include "./button_handler.h"
+#include "button/button_controller.h"
+
+#include "button/button_handler.h"
 
 ButtonController::ButtonController(unsigned int gpio): gpio_(gpio) {}
 

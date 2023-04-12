@@ -3,10 +3,12 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "button/button_controller.h"
+
 #include "CppUTest/TestHarness.h"
-#include "./button_controller.h"
-#include "./button_handler.h"
-#include "./button_handler_mock.h"
+
+#include "button/button_handler.h"
+#include "button/button_handler_mock.h"
 
 const unsigned int kGpio = 1;
 
