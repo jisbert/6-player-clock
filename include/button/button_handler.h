@@ -9,7 +9,7 @@
 #include "button/button_event.h"
 
 class ButtonHandler {
- public:
+ public:  // editorconfig-checker-disable-line
   virtual void HandlePressed(ButtonEvent event);
 };
 

@@ -11,7 +11,7 @@
 class ButtonController {
   const unsigned int gpio_;
   ButtonHandler *handler_;
- public:
+ public:  // editorconfig-checker-disable-line
   explicit ButtonController(unsigned int gpio);
   void handler(ButtonHandler *handler);
 };

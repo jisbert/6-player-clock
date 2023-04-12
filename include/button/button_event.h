@@ -8,7 +8,7 @@
 
 class ButtonEvent {
   const unsigned int gpio_;
- public:
+ public:  // editorconfig-checker-disable-line
   explicit ButtonEvent(unsigned int gpio);
   unsigned int gpio();
 };

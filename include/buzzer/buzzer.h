@@ -8,7 +8,7 @@
 
 class Buzzer {
   const unsigned int gpio_;
- public:
+ public:  // editorconfig-checker-disable-line
   explicit Buzzer(unsigned int gpio);
   void Beep();
 };
