@@ -3,5 +3,5 @@ target_include_directories(mocks INTERFACE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_sources(mocks INTERFACE
-  button/button_handler_mock.cc
+  src/button/button_handler_mock.cc
 )
