@@ -1,42 +1,45 @@
+---
 name: Build
 
 on: [push, workflow_dispatch]
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
     container: ghcr.io/jisbert/pico-sdk
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Code coverage report
-      run: |
-        cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
-        cmake --build ${{ github.workspace }}/coverage --target coverage
-        cp -r ${{ github.workspace }}/coverage/coverage coverage
+      - name: Code coverage report
+        run: |
+          cmake -B ${{ github.workspace }}/coverage -DENABLE_COVERAGE=ON
+          cmake --build ${{ github.workspace }}/coverage --target coverage
+          cp -r ${{ github.workspace }}/coverage/coverage coverage
 
-    - name: Archive code coverage report
-      uses: actions/upload-artifact@v3
-      with:
-        name: code-coverage-report
-        path: |
-          coverage
-          !coverage/src
-          !coverage/tests
+      - name: Archive code coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: |
+            coverage
+            !coverage/src
+            !coverage/tests
 
-    - name: Production binaries
-      run: |
-        cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
-        cmake --build ${{ github.workspace }}/build --target 6_player_clock
-        mkdir build
-        cp ${{ github.workspace }}/build/*.elf ${{ github.workspace }}/build/*.uf2 build
+      - name: Production binaries
+        run: |
+          cmake -B ${{ github.workspace }}/build -DENABLE_TESTS=OFF
+          cmake --build ${{ github.workspace }}/build --target 6_player_clock
+          mkdir build
+          cp ${{ github.workspace }}/build/*.elf \
+            ${{ github.workspace }}/build/*.uf2 build
 
-    - name: Archive production binaries
-      uses: actions/upload-artifact@v3
-      with:
-        name: production-binaries
-        path: |
-          build/*.elf
-          build/*.uf2
+      - name: Archive production binaries
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-binaries
+          path: |
+            build/*.elf
+            build/*.uf2
