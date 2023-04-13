@@ -43,7 +43,6 @@ COPY --from=pico-sdk /pico-sdk /pico-sdk
 RUN apk add --no-cache \
     -X https://dl-cdn.alpinelinux.org/alpine/edge/testing \
     cmake \
-    cpplint \
     cpputest \
     g++ \
     g++-arm-none-eabi \
