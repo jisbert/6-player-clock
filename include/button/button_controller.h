@@ -17,7 +17,7 @@ class ButtonController {
   ButtonEventHandler *button_event_handler_;
  public:  // editorconfig-checker-disable-line
   void button_event_handler(ButtonEventHandler *button_event_handler);
-  void handleEvent(uint16_t gpio, uint32_t event_mask);
+  void HandleEvent(uint16_t gpio, uint32_t event_mask);
 };
 
 #endif  // BUTTON_BUTTON_CONTROLLER_H_
