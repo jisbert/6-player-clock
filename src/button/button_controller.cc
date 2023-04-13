@@ -5,10 +5,12 @@
 
 #include "button/button_controller.h"
 
-#include "button/button_handler.h"
+#include "hardware/gpio.h"
 
-ButtonController::ButtonController(unsigned int gpio): gpio_(gpio) {}
-
-void ButtonController::handler(ButtonHandler *handler) {
-  this->handler_ = handler;
+void ButtonController::button_event_handler(ButtonEventHandler *button_event_handler) {
+  this->button_event_handler_ = button_event_handler;
 }
+
+void ButtonController::handleEvent(uint16_t gpio, uint32_t event_mask) {}
+
+ButtonController button_controller;

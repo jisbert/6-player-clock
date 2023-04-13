@@ -42,7 +42,7 @@ add_library(sources INTERFACE)
 target_sources(sources INTERFACE
   src/button/button_controller.cc
   src/button/button_event.cc
-  src/button/button_handler.cc
+  src/button/button_event_handler.cc
   src/buzzer/buzzer.cc
 )
 target_link_libraries(sources INTERFACE compiler_flags)

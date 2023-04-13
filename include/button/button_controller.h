@@ -6,14 +6,18 @@
 #ifndef BUTTON_BUTTON_CONTROLLER_H_
 #define BUTTON_BUTTON_CONTROLLER_H_
 
-#include "button/button_handler.h"
+#include <cstdint>
+
+#include "hardware/gpio.h"
+
+#include "button/button_event_handler.h"
 
 class ButtonController {
-  const unsigned int gpio_;
-  ButtonHandler *handler_;
+  // list of active events
+  ButtonEventHandler *button_event_handler_;
  public:  // editorconfig-checker-disable-line
-  explicit ButtonController(unsigned int gpio);
-  void handler(ButtonHandler *handler);
+  void button_event_handler(ButtonEventHandler *button_event_handler);
+  void handleEvent(uint16_t gpio, uint32_t event_mask);
 };
 
 #endif  // BUTTON_BUTTON_CONTROLLER_H_
