@@ -9,4 +9,4 @@
 # $ chmod +x cpplint.sh
 # $ ./cpplint.sh
 
-cpplint --counting=detailed $( find . -name \*.h -or -name \*.cc | grep -vE "^\.\/(build|coverage)\/" )
+find -type d \( -path ./build -or -path ./coverage \) -prune -or \( -name \*.h -or -name \*.cc \) -execdir cpplint --counting=detailed \{\} +
