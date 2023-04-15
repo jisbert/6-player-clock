@@ -8,8 +8,7 @@ target_link_libraries(tests PRIVATE
   CppUTest
   CppUTestExt
   mocks
-  headers
-  sources
+  components
 )
 if(ENABLE_COVERAGE)
   target_compile_options(tests PRIVATE --coverage -O0)
