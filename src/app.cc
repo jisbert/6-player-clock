@@ -5,8 +5,13 @@
 
 #include "pico/stdlib.h"
 
+#include "button/button_setup.h"
+
+ButtonController button_controller;
+
 int main() {
   stdio_init_all();
+  SetupButtonController(10, button_controller);
 
   return 0;
 }
