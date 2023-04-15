@@ -3,18 +3,16 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "button/button_handler.h"
-
 #include "CppUTest/TestHarness.h"
 
 #include "button/button_event.h"
-#include "button/button_handler_mock.h"
+#include "button/button_event_handler_mock.h"
 
-TEST_GROUP(ButtonHandler) {
-  ButtonHandler* button;
+TEST_GROUP(ButtonEventHandler) {
+  ButtonEventHandler* button;
 
   void setup() {
-    button = new ButtonHandlerMock();
+    button = new ButtonEventHandlerMock();
   }
 
   void teardown() {
@@ -22,7 +20,7 @@ TEST_GROUP(ButtonHandler) {
   }
 };
 
-TEST(ButtonHandler, General) {
+TEST(ButtonEventHandler, General) {
   mock().expectOneCall("HandlePressed");
   ButtonEvent event(1u);
   button->HandlePressed(event);

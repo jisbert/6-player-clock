@@ -7,19 +7,19 @@
 
 #include "CppUTest/TestHarness.h"
 
-#include "button/button_handler.h"
-#include "button/button_handler_mock.h"
+#include "button/button_event_handler.h"
+#include "button/button_event_handler_mock.h"
 
 const unsigned int kGpio = 1;
 
 TEST_GROUP(ButtonController) {
   ButtonController* controller;
-  ButtonHandler* handler;
+  ButtonEventHandler* handler;
 
   void setup() {
-    handler = new ButtonHandlerMock();
-    controller = new ButtonController(kGpio);
-    controller->handler(handler);
+    handler;
+    controller;
+    controller->button_event_handler(handler);
   }
 
   void teardown() {
