@@ -27,11 +27,11 @@
 # After performing these steps the personal token can be deleted
 
 FROM alpine:edge AS pico-sdk
-RUN apk add --no-cache git
+RUN apk add --no-cache git=2.40.0-r1
 ENV PICO_SDK_PATH=/pico-sdk
-RUN git clone -b master --depth=1 https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH}
-RUN git -C ${PICO_SDK_PATH}/lib submodule update --init --depth=1
-RUN git -C ${PICO_SDK_PATH}/lib/tinyusb submodule update --init --depth=1 hw/mcu/raspberry_pi
+RUN git clone -b master --depth=1 https://github.com/raspberrypi/pico-sdk.git ${PICO_SDK_PATH} \
+  && git -C ${PICO_SDK_PATH}/lib submodule update --init --depth=1 \
+  && git -C ${PICO_SDK_PATH}/lib/tinyusb submodule update --init --depth=1 hw/mcu/raspberry_pi
 
 FROM alpine:edge AS toolchain
 LABEL es.gont.name="Pico SDK 1.5.0"
@@ -41,10 +41,10 @@ ENV PICO_SDK_PATH=/pico-sdk
 ENV CMAKE_GENERATOR=Ninja
 COPY --from=pico-sdk /pico-sdk /pico-sdk
 RUN apk add --no-cache \
-    -X https://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    cmake \
-    cpputest \
-    g++ \
-    g++-arm-none-eabi \
-    lcov \
-    samurai
+  -X https://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  cmake=3.26.3-r1 \
+  cpputest=4.0-r1 \
+  g++=12.2.1_git20220924-r10 \
+  g++-arm-none-eabi=12.2.0-r1 \
+  lcov=1.16-r0 \
+  samurai=1.2-r3
