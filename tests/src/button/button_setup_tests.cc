@@ -23,7 +23,7 @@ void SetupPullUpAndEnableIrqExpectationsForGpio(std::uint32_t gpio) {
 }
 
 std::uint32_t SetupPullUpAndEnableIrqExpectationsForGpiosAndGpioMask(std::vector<std::uint32_t> gpios) {
-  std::uint32_t gpio_mask;
+  std::uint32_t gpio_mask = 0;
 
   for (auto gpio : gpios) {
     SetupPullUpAndEnableIrqExpectationsForGpio(gpio);
@@ -34,7 +34,7 @@ std::uint32_t SetupPullUpAndEnableIrqExpectationsForGpiosAndGpioMask(std::vector
 }
 
 TEST(ButtonSetup, SetupPullUpAndEnableIrqInitsExpectedGpios) {
-  std::vector<std::uint32_t> gpios = { 1, 5, 7 };
+  std::vector<std::uint32_t> gpios = { 0, 5, 7 };
   std::uint32_t gpio_mask = SetupPullUpAndEnableIrqExpectationsForGpiosAndGpioMask(gpios);
   mock("gpio").ignoreOtherCalls();
   mock("irq").ignoreOtherCalls();
