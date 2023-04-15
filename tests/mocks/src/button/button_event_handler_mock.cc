@@ -5,6 +5,8 @@
 
 #include "button/button_event_handler_mock.h"
 
+#include "CppUTestExt/MockSupport.h"
+
 #include "button/button_event.h"
 
 void ButtonEventHandlerMock::HandlePressed(ButtonEvent event) {

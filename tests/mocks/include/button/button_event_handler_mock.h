@@ -8,8 +8,6 @@
 
 #include "button/button_event_handler.h"
 
-#include "CppUTestExt/MockSupport.h"
-
 class ButtonEventHandlerMock: public ButtonEventHandler {
   void HandlePressed(ButtonEvent event) final;
 };

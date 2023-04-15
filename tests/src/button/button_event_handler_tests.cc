@@ -4,6 +4,7 @@
  */
 
 #include "CppUTest/TestHarness.h"
+#include "CppUTestExt/MockSupport.h"
 
 #include "button/button_event.h"
 #include "button/button_event_handler_mock.h"
