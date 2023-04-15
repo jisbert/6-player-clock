@@ -18,8 +18,8 @@ if(ENABLE_COVERAGE)
     NAME coverage
     EXECUTABLE tests
     DEPENDENCIES tests
-    BASE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    EXCLUDE ../../tests/* /usr/*
+    BASE_DIRECTORY ${PROJECT_SOURCE_DIR}
+    EXCLUDE tests/* /usr/*
   )
 endif()
 add_subdirectory(mocks)
