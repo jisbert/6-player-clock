@@ -9,4 +9,4 @@
 # $ chmod +x cpplint.sh
 # $ ./cpplint.sh
 
-find -type d \( -path ./build -or -path ./coverage \) -prune -or \( -name \*.h -or -name \*.cc \) -execdir cpplint --counting=detailed \{\} +
+find . -type d \( -path ./build -or -path ./coverage \) -prune -or \( -name \*.h -or -name \*.cc \) -execdir cpplint --counting=detailed \{\} +
