@@ -17,8 +17,8 @@ TEST_GROUP(ButtonController) {
   ButtonEventHandler* handler;
 
   void setup() {
-    handler;
-    controller;
+    handler = new ButtonEventHandler();
+    controller = new ButtonController();
     controller->button_event_handler(handler);
   }
 
