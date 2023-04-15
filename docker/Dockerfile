@@ -47,4 +47,5 @@ RUN apk add --no-cache \
   g++=12.2.1_git20220924-r10 \
   g++-arm-none-eabi=12.2.0-r1 \
   lcov=1.16-r0 \
+  python3=3.11.3-r3 \
   samurai=1.2-r3
