@@ -28,5 +28,4 @@ TEST_GROUP(ButtonController) {
   }
 };
 
-TEST(ButtonController, General) {
-}
+TEST(ButtonController, General) {}
