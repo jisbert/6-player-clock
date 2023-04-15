@@ -11,4 +11,4 @@ void ButtonController::button_event_handler(ButtonEventHandler *button_event_han
   this->button_event_handler_ = button_event_handler;
 }
 
-void ButtonController::HandleEvent(uint16_t gpio, uint32_t event_mask) {}
+void ButtonController::HandleEvent(std::uint16_t gpio, std::uint32_t event_mask) {}
