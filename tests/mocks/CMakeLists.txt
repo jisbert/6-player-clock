@@ -4,4 +4,6 @@ target_include_directories(mocks INTERFACE
 )
 target_sources(mocks INTERFACE
   src/button/button_event_handler_mock.cc
+  src/hardware/gpio_mock.cc
+  src/hardware/irq_mock.cc
 )
