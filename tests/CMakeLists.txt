@@ -19,7 +19,7 @@ if(ENABLE_COVERAGE)
     EXECUTABLE tests
     DEPENDENCIES tests
     BASE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-    EXCLUDE /6-player-clock/tests/* /usr/* tests/*
+    EXCLUDE /6-player-clock/tests/* /__w/6-player-clock/6-player-clock/tests/* /usr/*
   )
 endif()
 add_subdirectory(mocks)
