@@ -45,7 +45,7 @@ target_sources(components INTERFACE
   src/buzzer/buzzer.cc
 )
 
-add_executable(6_player_clock src/app.cc)
+add_executable(6_player_clock src/6_player_clock.cc)
 target_link_libraries(6_player_clock
   compiler_flags
   pico_stdlib

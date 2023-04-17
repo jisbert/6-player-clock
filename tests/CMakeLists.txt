@@ -1,4 +1,4 @@
-add_executable(tests src/tests_app.cc
+add_executable(tests src/6_player_clock_tests.cc
   src/button/button_controller_tests.cc
   src/button/button_event_handler_tests.cc
   src/button/button_setup_tests.cc
