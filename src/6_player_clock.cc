@@ -11,7 +11,7 @@ ButtonController button_controller;
 
 int main() {
   stdio_init_all();
-  SetupButtonController(10, button_controller);
+  SetupButtons({ 10 }, button_controller);
 
   return 0;
 }

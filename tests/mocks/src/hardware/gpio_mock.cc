@@ -18,6 +18,10 @@ void gpio_set_irq_enabled(unsigned int gpio, unsigned long event_mask, bool enab
     .withParameter("enabled", enabled);
 }
 
+void gpio_init(unsigned int gpio) {
+  mock("gpio").actualCall("gpio_init").withParameter("gpio", gpio);
+}
+
 void gpio_init_mask(unsigned int gpio_mask) {
   mock("gpio").actualCall("gpio_init_mask").withParameter("gpio_mask", gpio_mask);
 }

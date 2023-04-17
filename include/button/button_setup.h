@@ -7,11 +7,12 @@
 #define BUTTON_BUTTON_SETUP_H_
 
 #include <cstdint>
+#include <vector>
 
 #include "button/button_controller.h"
 
 #define GPIO_COUNT 30
 
-void SetupButtonController(const std::uint32_t gpio_mask, ButtonController button_controller);
+void SetupButtons(const std::vector<std::uint32_t> gpio_mask, ButtonController button_controller);
 
 #endif  // BUTTON_BUTTON_SETUP_H_

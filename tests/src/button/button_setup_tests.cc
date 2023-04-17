@@ -14,7 +14,8 @@ TEST_GROUP(ButtonSetup) {
   ButtonController button_controller;
 };
 
-void SetupPullUpAndEnableIrqExpectationsForGpio(std::uint32_t gpio) {
+void SetupExpectationsForGpio(std::uint32_t gpio) {
+  mock("gpio").expectOneCall("gpio_init").withParameter("gpio", gpio);
   mock("gpio").expectOneCall("gpio_pull_up").withParameter("gpio", gpio);
   mock("gpio").expectOneCall("gpio_set_irq_enabled")
     .withParameter("gpio", gpio)
@@ -22,21 +23,16 @@ void SetupPullUpAndEnableIrqExpectationsForGpio(std::uint32_t gpio) {
     .withParameter("enabled", true);
 }
 
-std::uint32_t SetupPullUpAndEnableIrqExpectationsForGpiosAndGpioMask(std::vector<std::uint32_t> gpios) {
-  std::uint32_t gpio_mask = 0;
+TEST(ButtonSetup, SetupButtons) {
+  std::vector<std::uint32_t> gpios = { 0, 5, 7 };
 
   for (auto gpio : gpios) {
-    SetupPullUpAndEnableIrqExpectationsForGpio(gpio);
-    gpio_mask += (1 << gpio);
+    SetupExpectationsForGpio(gpio);
   }
 
-  return gpio_mask;
-}
-
-TEST(ButtonSetup, SetupPullUpAndEnableIrqInitsExpectedGpios) {
-  std::vector<std::uint32_t> gpios = { 0, 5, 7 };
-  std::uint32_t gpio_mask = SetupPullUpAndEnableIrqExpectationsForGpiosAndGpioMask(gpios);
-  mock("gpio").ignoreOtherCalls();
-  mock("irq").ignoreOtherCalls();
-  SetupButtonController(gpio_mask, button_controller);
+  mock("gpio").expectOneCall("gpio_set_irq_callback");
+  mock("irq").expectOneCall("irq_set_enabled")
+    .withParameter("num", IO_IRQ_BANK0)
+    .withParameter("enabled", true);
+  SetupButtons(gpios, button_controller);
 }
