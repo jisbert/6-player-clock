@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "6_player_clock.h"  // NOLINT(build/include_subdir)
+
 #include "pico/stdlib.h"
 
 #include "button/button_setup.h"
@@ -11,7 +13,7 @@ ButtonController button_controller;
 
 int main() {
   stdio_init_all();
-  SetupButtons({ 10 }, button_controller);
+  SetupButtons({ PLAYER_1_BUTTON_PIN }, button_controller);
 
   return 0;
 }
