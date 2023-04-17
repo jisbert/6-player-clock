@@ -8,9 +8,11 @@
 
 #include "button/button_event.h"
 
+#include <cstdint>
+
 class ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
-  virtual void HandlePressed(ButtonEvent event);
+  virtual void HandlePressed(std::uint32_t gpio);
 };
 
 #endif  // BUTTON_BUTTON_EVENT_HANDLER_H_

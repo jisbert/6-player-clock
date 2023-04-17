@@ -9,6 +9,6 @@
 
 #include "button/button_event.h"
 
-void ButtonEventHandlerMock::HandlePressed(ButtonEvent event) {
-  mock().actualCall("HandlePressed");
+void ButtonEventHandlerMock::HandlePressed(std::uint32_t gpio) {
+  mock().actualCall("HandlePressed").withParameter("gpio", gpio);
 }

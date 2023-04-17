@@ -7,4 +7,4 @@
 
 #include "button/button_event.h"
 
-void ButtonEventHandler::HandlePressed(ButtonEvent event) {}
+void ButtonEventHandler::HandlePressed(std::uint32_t gpio) {}

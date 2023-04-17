@@ -9,7 +9,7 @@
 #include "button/button_event_handler.h"
 
 class ButtonEventHandlerMock: public ButtonEventHandler {
-  void HandlePressed(ButtonEvent event) final;
+  void HandlePressed(std::uint32_t gpio) final;
 };
 
 #endif  // BUTTON_BUTTON_EVENT_HANDLER_MOCK_H_

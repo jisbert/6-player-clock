@@ -6,6 +6,7 @@
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
 
+#include "6_player_clock.h"  // NOLINT(build/include_subdir)
 #include "button/button_event.h"
 #include "button/button_event_handler_mock.h"
 
@@ -22,7 +23,7 @@ TEST_GROUP(ButtonEventHandler) {
 };
 
 TEST(ButtonEventHandler, General) {
-  mock().expectOneCall("HandlePressed");
-  ButtonEvent event(1u);
-  button->HandlePressed(event);
+  std::uint32_t gpio = PLAYER_1_BUTTON_PIN;
+  mock().expectOneCall("HandlePressed").withParameter("gpio", gpio);
+  button->HandlePressed(gpio);
 }

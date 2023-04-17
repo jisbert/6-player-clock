@@ -11,4 +11,8 @@ void ButtonController::button_event_handler(ButtonEventHandler *button_event_han
   this->button_event_handler_ = button_event_handler;
 }
 
-void ButtonController::HandleEvent(std::uint16_t gpio, std::uint32_t event_mask) {}
+void ButtonController::HandleEvent(std::uint16_t gpio, std::uint32_t event_mask) {
+  if (event_mask & GPIO_IRQ_EDGE_FALL) {
+    button_event_handler_->HandlePressed(gpio);
+  }
+}
