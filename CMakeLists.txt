@@ -43,6 +43,9 @@ target_sources(components INTERFACE
   src/button/button_event_handler.cc
   src/button/button_setup.cc
   src/buzzer/buzzer.cc
+  src/clock/clock.cc
+  src/display/display.cc
+  src/player/context_switcher.cc
 )
 
 add_executable(6_player_clock src/6_player_clock.cc)
