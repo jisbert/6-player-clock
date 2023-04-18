@@ -6,12 +6,12 @@
 #ifndef _6_PLAYER_CLOCK_H_  // NOLINT(build/header_guard)
 #define _6_PLAYER_CLOCK_H_
 
-#define PLAYER_1_BUTTON_PIN 5
-#define PLAYER_2_BUTTON_PIN 6
-#define PLAYER_3_BUTTON_PIN 7
+#define PLAYER_1_BUTTON_PIN 20
+#define PLAYER_2_BUTTON_PIN 21
+#define PLAYER_3_BUTTON_PIN 22
 
-#define PLAYER_1_LED_PIN 8
-#define PLAYER_2_LED_PIN 9
-#define PLAYER_3_LED_PIN 10
+#define PLAYER_1_LED_PIN 11
+#define PLAYER_2_LED_PIN 12
+#define PLAYER_3_LED_PIN 13
 
 #endif  // _6_PLAYER_CLOCK_H_  // NOLINT(build/header_guard)
