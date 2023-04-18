@@ -7,10 +7,10 @@
 
 #include "hardware/gpio.h"
 
-ButtonController *button_controller_ = nullptr;
+ButtonController button_controller_;
 
 void Callback(unsigned int gpio, unsigned long event_mask) {  // NOLINT(runtime/int)
-  button_controller_->HandleEvent(gpio, event_mask);
+  button_controller_.HandleEvent(gpio, event_mask);
 }
 
 void SetupButton(std::uint32_t gpio) {
@@ -19,13 +19,13 @@ void SetupButton(std::uint32_t gpio) {
   gpio_set_irq_enabled(gpio, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true);
 }
 
-void SetupButtons(const std::vector<std::uint32_t> gpios, ButtonController button_controller) {
-  button_controller_ = &button_controller;
-
+ButtonController SetupButtons(const std::vector<std::uint32_t> gpios) {
   for (auto gpio : gpios) {
     SetupButton(gpio);
   }
 
   gpio_set_irq_callback(Callback);
   irq_set_enabled(IO_IRQ_BANK0, true);
+
+  return button_controller_;
 }

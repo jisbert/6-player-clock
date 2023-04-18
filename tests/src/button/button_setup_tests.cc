@@ -11,7 +11,6 @@
 #include "button/button_setup.h"
 
 TEST_GROUP(ButtonSetup) {
-  ButtonController button_controller;
 };
 
 void SetupExpectationsForGpio(std::uint32_t gpio) {
@@ -34,5 +33,5 @@ TEST(ButtonSetup, SetupButtons) {
   mock("irq").expectOneCall("irq_set_enabled")
     .withParameter("num", IO_IRQ_BANK0)
     .withParameter("enabled", true);
-  SetupButtons(gpios, button_controller);
+  SetupButtons(gpios);
 }

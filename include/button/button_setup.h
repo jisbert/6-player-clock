@@ -13,6 +13,6 @@
 
 #define GPIO_COUNT 30
 
-void SetupButtons(const std::vector<std::uint32_t> gpio_mask, ButtonController button_controller);
+ButtonController SetupButtons(const std::vector<std::uint32_t> gpio_mask);
 
 #endif  // BUTTON_BUTTON_SETUP_H_

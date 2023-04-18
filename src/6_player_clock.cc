@@ -13,7 +13,7 @@ ButtonController button_controller;
 
 int main() {
   stdio_init_all();
-  SetupButtons({ PLAYER_1_BUTTON_PIN }, button_controller);
+  button_controller = SetupButtons({ PLAYER_1_BUTTON_PIN });
 
   return 0;
 }
