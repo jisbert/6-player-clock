@@ -5,14 +5,16 @@
 
 #include "clock/clock.h"
 
+#include <cstdint>
+
 #include "buzzer/buzzer.h"
 #include "display/display.h"
 #include "player/player_context.h"
 
-Clock::Clock(Buzzer buzzer, Display display): buzzer_(buzzer), display_(display), player_context_(nullptr) {}
+void Clock::Resume(std::uint32_t remaining_seconds) {}
 
-void Clock::player_context(PlayerContext player_context) {
-  player_context_ = &player_context;
+void Clock::Pause() const {}
+
+std::uint32_t Clock::remaining_seconds() const {
+  return remaining_seconds_;
 }
-
-void Clock::Start() {}

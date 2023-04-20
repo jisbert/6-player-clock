@@ -6,6 +6,8 @@
 #ifndef PLAYER_CONTEXT_SWITCHER_H_
 #define PLAYER_CONTEXT_SWITCHER_H_
 
+#define NON_EXISTENT_PIN 1000
+
 #include <cstdint>
 #include <unordered_map>
 
@@ -14,11 +16,14 @@
 #include "player/player_context.h"
 
 class ContextSwitcher : ButtonEventHandler {
-  Clock *clock_;
+  Clock& clock_;
   std::unordered_map<std::uint32_t, PlayerContext> player_context_map_;
+  std::uint32_t last_button_pressed_ = NON_EXISTENT_PIN;
+  void SaveLastPlayerContext();
+  void ResumeClockWithCurrentPlayerContext(std::uint32_t button_pressed);
  public:  // editorconfig-checker-disable-line
-  ContextSwitcher(Clock *clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(whitespace/line_length)
-  void HandlePressed(std::uint32_t gpio) final;
+  ContextSwitcher(Clock& clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(whitespace/line_length)
+  void HandlePressed(std::uint32_t button_pressed) final;
 };
 
 #endif  // PLAYER_CONTEXT_SWITCHER_H_
