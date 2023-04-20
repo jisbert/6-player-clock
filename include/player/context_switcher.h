@@ -22,7 +22,8 @@ class ContextSwitcher : ButtonEventHandler {
   void SaveLastPlayerContext();
   void ResumeClockWithCurrentPlayerContext(std::uint32_t button_pressed);
  public:  // editorconfig-checker-disable-line
-  ContextSwitcher(Clock& clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(whitespace/line_length)
+  // TODO(jisbert): Can be clock passed like this const Clock& clock
+  ContextSwitcher(Clock& clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(*)
   void HandlePressed(std::uint32_t button_pressed) final;
 };
 
