@@ -7,15 +7,17 @@
 #define PLAYER_CONTEXT_SWITCHER_H_
 
 #include <cstdint>
-#include <map>
+#include <unordered_map>
 
 #include "button/button_event_handler.h"
+#include "clock/clock.h"
 #include "player/player_context.h"
 
 class ContextSwitcher : ButtonEventHandler {
-  std::map<std::uint32_t, PlayerContext> context_map_;
+  Clock *clock_;
+  std::unordered_map<std::uint32_t, PlayerContext> player_context_map_;
  public:  // editorconfig-checker-disable-line
-  ContextSwitcher(std::map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);
+  ContextSwitcher(Clock *clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(whitespace/line_length)
   void HandlePressed(std::uint32_t gpio) final;
 };
 

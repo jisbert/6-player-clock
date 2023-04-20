@@ -46,6 +46,7 @@ target_sources(components INTERFACE
   src/clock/clock.cc
   src/display/display.cc
   src/player/context_switcher.cc
+  src/player/player_context.cc
 )
 
 add_executable(6_player_clock src/6_player_clock.cc)
