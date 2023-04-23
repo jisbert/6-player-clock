@@ -16,8 +16,8 @@ constexpr std::uint16_t kPlayer5ButtonPin = 24;
 constexpr std::uint16_t kPlayer6ButtonPin = 25;
 
 namespace button {
-  void SetupButtons(ButtonController& button_controller_);
-} // namespace button
+  void SetupButtons(ButtonController& button_controller_);  // NOLINT(runtime/references)
+}  // namespace button
 
 
 #endif  // BUTTON_BUTTON_H_
