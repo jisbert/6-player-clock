@@ -22,6 +22,7 @@ int main() {
   Display display;
   Clock clock{display, buzzer};
   ContextSwitcher context_switcher{clock, 1000};
+  button_controller.button_event_handler(&context_switcher);
 
   while (true) {
     tight_loop_contents();

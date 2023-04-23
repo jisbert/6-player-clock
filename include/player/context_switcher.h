@@ -14,7 +14,7 @@
 #include "clock/clock.h"
 #include "player/player_context.h"
 
-class ContextSwitcher : ButtonEventHandler {
+class ContextSwitcher : public ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
   // TODO(jisbert): Can be clock passed like this const Clock& clock
   ContextSwitcher(Clock& clock, std::uint32_t initial_time);  // NOLINT(*)
