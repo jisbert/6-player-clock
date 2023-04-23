@@ -11,7 +11,7 @@
 class PlayerContext {
   const std::uint32_t led_gpio_;
   std::uint32_t remaining_seconds_;
- public:  // editorconfig-checker-disable-line
+ public:  // editorconfig-checker-disable-line
   // TODO(jisbert): It is really needed?
   PlayerContext(std::uint32_t led_gpio, std::uint32_t remaining_seconds);
   std::uint32_t remaining_seconds();
