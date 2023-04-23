@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "6_player_clock.h"  // NOLINT(build/include_subdir)
-
 #include "pico/stdlib.h"
 
 #include "button/button.h"
