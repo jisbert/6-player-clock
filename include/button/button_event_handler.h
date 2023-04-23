@@ -12,7 +12,7 @@
 
 class ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
-  virtual void HandlePressed(std::uint32_t gpio);
+  virtual void HandlePressed(std::uint16_t button_pin);
 };
 
 #endif  // BUTTON_BUTTON_EVENT_HANDLER_H_

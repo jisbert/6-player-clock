@@ -6,25 +6,27 @@
 #ifndef PLAYER_CONTEXT_SWITCHER_H_
 #define PLAYER_CONTEXT_SWITCHER_H_
 
-#define NON_EXISTENT_PIN 1000
-
 #include <cstdint>
 #include <unordered_map>
 
+#include "button/button.h"
 #include "button/button_event_handler.h"
 #include "clock/clock.h"
 #include "player/player_context.h"
 
 class ContextSwitcher : ButtonEventHandler {
-  Clock& clock_;
-  std::unordered_map<std::uint32_t, PlayerContext> player_context_map_;
-  std::uint32_t last_button_pressed_ = NON_EXISTENT_PIN;
-  void SaveLastPlayerContext();
-  void ResumeClockWithCurrentPlayerContext(std::uint32_t button_pressed);
  public:  // editorconfig-checker-disable-line
   // TODO(jisbert): Can be clock passed like this const Clock& clock
-  ContextSwitcher(Clock& clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time);  // NOLINT(*)
-  void HandlePressed(std::uint32_t button_pressed) final;
+  ContextSwitcher(Clock& clock, std::uint32_t initial_time);  // NOLINT(*)
+  void HandlePressed(std::uint16_t button_pin) final;
+ private:  // editorconfig-checker-disable-line
+  Clock& clock_;
+  std::unordered_map<std::uint16_t, PlayerContext> player_context_map_;
+  PlayerContext* last_player_context_;
+  void UpdateLastPlayerRemainingSeconds();
+  void SwitchContext(std::uint16_t button_pin);
+  void SwitchLed(std::uint16_t clearing_led_pin, std::uint16_t setting_lend_pin);
+  void ResumeClock();
 };
 
 #endif  // PLAYER_CONTEXT_SWITCHER_H_

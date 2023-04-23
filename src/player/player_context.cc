@@ -7,7 +7,15 @@
 
 #include <cstdint>
 
-PlayerContext::PlayerContext(std::uint32_t led_gpio, std::uint32_t remaining_seconds) : led_gpio_(led_gpio), remaining_seconds_(remaining_seconds) {}  // NOLINT(whitespace/line_length)
+PlayerContext PlayerContext::default_player_context_{0, 0};
+
+PlayerContext::PlayerContext(
+    std::uint32_t led_pin,
+    std::uint32_t remaining_seconds) : led_pin_(led_pin), remaining_seconds_(remaining_seconds) {}
+
+std::int16_t PlayerContext::led_pin() {
+  return led_pin_;
+}
 
 std::uint32_t PlayerContext::remaining_seconds() {
   return remaining_seconds_;

@@ -9,34 +9,53 @@
 #include <unordered_map>
 #include <vector>
 
-ContextSwitcher::ContextSwitcher(Clock& clock, std::unordered_map<std::uint32_t, std::uint32_t> button_to_led_map_, std::uint32_t initial_time) : clock_(clock) {  // NOLINT(whitespace/line_length)
-  player_context_map_;
-  player_context_map_.reserve(button_to_led_map_.size());
+#include "hardware/gpio.h"
 
-  for (auto button_to_led_pair : button_to_led_map_) {
-    player_context_map_.emplace(button_to_led_pair.first, PlayerContext(button_to_led_pair.first, initial_time));
-  }
+#include "button/button.h"
+#include "clock/clock.h"
+#include "led/led.h"
+#include "player/player_context.h"
+
+ContextSwitcher::ContextSwitcher(
+    Clock& clock,
+    std::uint32_t initial_time) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
+  player_context_map_ = {
+    {kPlayer1ButtonPin, {kPlayer1LedPin, initial_time}},
+    {kPlayer2ButtonPin, {kPlayer2LedPin, initial_time}},
+    {kPlayer3ButtonPin, {kPlayer3LedPin, initial_time}},
+    {kPlayer4ButtonPin, {kPlayer4LedPin, initial_time}},
+    {kPlayer5ButtonPin, {kPlayer5LedPin, initial_time}},
+    {kPlayer6ButtonPin, {kPlayer6LedPin, initial_time}},
+  };
 }
 
-void ContextSwitcher::SaveLastPlayerContext() {
-  auto last_player_context = player_context_map_.find(last_button_pressed_);
-
-  if (last_player_context != player_context_map_.end()) {
-    last_player_context->second.remaining_seconds(clock_.remaining_seconds());
-  }
-}
-
-void ContextSwitcher::ResumeClockWithCurrentPlayerContext(std::uint32_t button_pressed) {
-  auto tuple = player_context_map_.find(button_pressed);
-
-  if (tuple != player_context_map_.end()) {
-    last_button_pressed_ = button_pressed;
-    clock_.Resume(tuple->second.remaining_seconds());
-  }
-}
-
-void ContextSwitcher::HandlePressed(std::uint32_t button_pressed) {
+void ContextSwitcher::UpdateLastPlayerRemainingSeconds() {
   clock_.Pause();
-  SaveLastPlayerContext();
-  ResumeClockWithCurrentPlayerContext(button_pressed);
+  last_player_context_->remaining_seconds(clock_.remaining_seconds());
+}
+
+void ContextSwitcher::SwitchContext(std::uint16_t button_pin) {
+  auto iterator = player_context_map_.find(button_pin);
+
+  if (iterator != player_context_map_.end()) {
+    std::uint16_t clearing_led_pin = last_player_context_->led_pin();
+    last_player_context_ = &iterator->second;
+    std::uint16_t setting_led_pin = last_player_context_->led_pin();
+    SwitchLed(clearing_led_pin, setting_led_pin);
+    ResumeClock();
+  }
+}
+
+void ContextSwitcher::SwitchLed(std::uint16_t clearing_led_pin, std::uint16_t setting_lend_pin) {
+  gpio_put(clearing_led_pin, false);
+  gpio_put(setting_lend_pin, true);
+}
+
+void ContextSwitcher::ResumeClock() {
+  clock_.Resume(last_player_context_->remaining_seconds());
+}
+
+void ContextSwitcher::HandlePressed(std::uint16_t button_pin) {
+  UpdateLastPlayerRemainingSeconds();
+  SwitchContext(button_pin);
 }

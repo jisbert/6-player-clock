@@ -8,8 +8,10 @@
 
 #include "button/button_event_handler.h"
 
+#include <cstdint>
+
 class ButtonEventHandlerMock: public ButtonEventHandler {
-  void HandlePressed(std::uint32_t gpio) final;
+  void HandlePressed(std::uint16_t gpio) final;
 };
 
 #endif  // BUTTON_BUTTON_EVENT_HANDLER_MOCK_H_

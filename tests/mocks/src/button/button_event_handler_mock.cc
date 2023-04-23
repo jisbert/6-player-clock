@@ -5,10 +5,10 @@
 
 #include "button/button_event_handler_mock.h"
 
+#include <cstdint>
+
 #include "CppUTestExt/MockSupport.h"
 
-#include "button/button_event.h"
-
-void ButtonEventHandlerMock::HandlePressed(std::uint32_t gpio) {
+void ButtonEventHandlerMock::HandlePressed(std::uint16_t gpio) {
   mock().actualCall("HandlePressed").withParameter("gpio", gpio);
 }

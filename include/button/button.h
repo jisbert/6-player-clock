@@ -8,6 +8,7 @@
 
 #include "button/button_controller.h"
 
+constexpr std::uint16_t kUndefinedButtonPin = 0;
 constexpr std::uint16_t kPlayer1ButtonPin = 20;
 constexpr std::uint16_t kPlayer2ButtonPin = 21;
 constexpr std::uint16_t kPlayer3ButtonPin = 22;

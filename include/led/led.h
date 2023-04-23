@@ -6,6 +6,9 @@
 #ifndef LED_LED_H_
 #define LED_LED_H_
 
+#include <cstdint>
+
+constexpr std::uint16_t kUndefinedLedPin = 0;
 constexpr std::uint16_t kPlayer1LedPin = 11;
 constexpr std::uint16_t kPlayer2LedPin = 12;
 constexpr std::uint16_t kPlayer3LedPin = 13;

@@ -5,6 +5,6 @@
 
 #include "button/button_event_handler.h"
 
-#include "button/button_event.h"
+#include <cstdint>
 
-void ButtonEventHandler::HandlePressed(std::uint32_t gpio) {}
+void ButtonEventHandler::HandlePressed(std::uint16_t button_pin) {}
