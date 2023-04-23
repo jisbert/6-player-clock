@@ -20,12 +20,12 @@ ContextSwitcher::ContextSwitcher(
     Clock& clock,
     std::uint32_t initial_time) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
   player_context_map_ = {
-    {kPlayer1ButtonPin, {kPlayer1LedPin, initial_time}},
-    {kPlayer2ButtonPin, {kPlayer2LedPin, initial_time}},
-    {kPlayer3ButtonPin, {kPlayer3LedPin, initial_time}},
-    {kPlayer4ButtonPin, {kPlayer4LedPin, initial_time}},
-    {kPlayer5ButtonPin, {kPlayer5LedPin, initial_time}},
-    {kPlayer6ButtonPin, {kPlayer6LedPin, initial_time}},
+    {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, initial_time}},
+    {button::kPlayer2ButtonPin, {led::kPlayer2LedPin, initial_time}},
+    {button::kPlayer3ButtonPin, {led::kPlayer3LedPin, initial_time}},
+    {button::kPlayer4ButtonPin, {led::kPlayer4LedPin, initial_time}},
+    {button::kPlayer5ButtonPin, {led::kPlayer5LedPin, initial_time}},
+    {button::kPlayer6ButtonPin, {led::kPlayer6LedPin, initial_time}},
   };
 }
 

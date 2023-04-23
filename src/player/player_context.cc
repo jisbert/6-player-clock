@@ -7,7 +7,9 @@
 
 #include <cstdint>
 
-PlayerContext PlayerContext::default_player_context_{0, 0};
+#include "led/led.h"
+
+PlayerContext PlayerContext::default_player_context_{led::kUndefinedLedPin, 0};
 
 PlayerContext::PlayerContext(
     std::uint32_t led_pin,

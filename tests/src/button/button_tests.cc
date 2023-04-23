@@ -25,12 +25,12 @@ TEST_GROUP(Button) {
 };
 
 TEST(Button, SetupButtons) {
-  for (auto player_button_pin : { kPlayer1ButtonPin,
-                                  kPlayer2ButtonPin,
-                                  kPlayer3ButtonPin,
-                                  kPlayer4ButtonPin,
-                                  kPlayer5ButtonPin,
-                                  kPlayer6ButtonPin }) {
+  for (auto player_button_pin : { button::kPlayer1ButtonPin,
+                                  button::kPlayer2ButtonPin,
+                                  button::kPlayer3ButtonPin,
+                                  button::kPlayer4ButtonPin,
+                                  button::kPlayer5ButtonPin,
+                                  button::kPlayer6ButtonPin }) {
     mock("gpio").expectOneCall("gpio_init").withParameter("gpio", player_button_pin);
     mock("gpio").expectOneCall("gpio_pull_up").withParameter("gpio", player_button_pin);
     mock("gpio").expectOneCall("gpio_set_irq_enabled")
