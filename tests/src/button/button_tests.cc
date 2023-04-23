@@ -3,29 +3,34 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "button/button.h"
 #include "button/button_controller.h"
+#include "button/button_controller_mock.h"
 
 #include "CppUTest/TestHarness.h"
 #include "CppUTestExt/MockSupport.h"
 #include "hardware/gpio.h"
+#include "hardware/irq.h"
 
-#include "6_player_clock.h"
-#include "button/button_event_handler.h"
-#include "button/button_event_handler_mock.h"
+TEST_GROUP(Button) {
+  ButtonController* button_controller_;
 
-TEST_GROUP(ButtonController) {
-  void setup() {}
+  void setup() {
+    button_controller_ = new ButtonControllerMock();
+  }
 
-  void teardown() {}
+  void teardown() {
+    delete button_controller_;
+  }
 };
 
-IGNORE_TEST(ButtonController, Setup) {
+TEST(Button, SetupButtons) {
   for (auto player_button_pin : { kPlayer1ButtonPin,
                                   kPlayer2ButtonPin,
                                   kPlayer3ButtonPin,
                                   kPlayer4ButtonPin,
                                   kPlayer5ButtonPin,
-                                  kPlayer6ButtonPin}) {
+                                  kPlayer6ButtonPin }) {
     mock("gpio").expectOneCall("gpio_init").withParameter("gpio", player_button_pin);
     mock("gpio").expectOneCall("gpio_pull_up").withParameter("gpio", player_button_pin);
     mock("gpio").expectOneCall("gpio_set_irq_enabled")
@@ -34,9 +39,10 @@ IGNORE_TEST(ButtonController, Setup) {
       .withParameter("enabled", true);
   }
 
-  mock("gpio").expectOneCall("gpio_set_irq_callback");
   mock("irq").expectOneCall("irq_set_enabled")
     .withParameter("num", IO_IRQ_BANK0)
     .withParameter("enabled", true);
+  mock("button_controller").expectOneCall("SetupAsIrqHandler");
+  button::SetupButtons(*button_controller_);
 }
 

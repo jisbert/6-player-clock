@@ -7,13 +7,13 @@
 
 #include "pico/stdlib.h"
 
-#include "button/button_setup.h"
-
-ButtonController button_controller;
+#include "button/button.h"
+#include "button/button_controller.h"
 
 int main() {
   stdio_init_all();
-  button_controller = SetupButtons({ kPlayer1ButtonPin });
+  ButtonController button_controller;
+  button::SetupButtons(button_controller);
 
   return 0;
 }

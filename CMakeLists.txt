@@ -38,10 +38,10 @@ target_include_directories(components INTERFACE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 target_sources(components INTERFACE
+  src/button/button.cc
   src/button/button_controller.cc
   src/button/button_event.cc
   src/button/button_event_handler.cc
-  src/button/button_setup.cc
   src/buzzer/buzzer.cc
   src/clock/clock.cc
   src/display/display.cc

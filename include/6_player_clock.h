@@ -9,6 +9,7 @@
 #include <cstdint>
 
 constexpr std::uint16_t kGpioCount = 30;
+constexpr std::uint16_t playerCount = 6;
 constexpr std::uint16_t kPlayer1LedPin = 11;
 constexpr std::uint16_t kPlayer2LedPin = 12;
 constexpr std::uint16_t kPlayer3LedPin = 13;
