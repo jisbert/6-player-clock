@@ -7,13 +7,24 @@
 
 #include "button/button.h"
 #include "button/button_controller.h"
+#include "buzzer/buzzer.h"
+#include "clock/clock.h"
+#include "display/display.h"
 #include "led/led.h"
+#include "player/context_switcher.h"
 
 int main() {
   stdio_init_all();
   led::SetupLeds();
   ButtonController button_controller;
   button::SetupButtons(button_controller);
+  Buzzer buzzer{18};
+  Display display;
+  Clock clock{display, buzzer};
+  ContextSwitcher context_switcher{clock, 1000};
 
-  return 0;
+  while (true) {
+    tight_loop_contents();
+  }
+  
 }
