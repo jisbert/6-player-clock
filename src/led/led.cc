@@ -10,12 +10,12 @@
 #include "hardware/gpio.h"
 
 void led::SetupLeds() {
-  for (auto player_led_pin : { kPlayer1LedPin,
-                               kPlayer2LedPin,
-                               kPlayer3LedPin,
-                               kPlayer4LedPin,
-                               kPlayer5LedPin,
-                               kPlayer6LedPin, }) {
+  for (auto player_led_pin : {  kPlayer1LedPin,
+                                kPlayer2LedPin,
+                                kPlayer3LedPin,
+                                kPlayer4LedPin,
+                                kPlayer5LedPin,
+                                kPlayer6LedPin, }) {
     gpio_init(player_led_pin);
     gpio_set_dir(player_led_pin, true);
   }
