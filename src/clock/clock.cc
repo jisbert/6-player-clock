@@ -16,7 +16,7 @@
 Clock::Clock(Display& display, Buzzer& buzzer): display_(display), buzzer_(buzzer) {}
 
 void Clock::Resume(std::uint32_t remaining_seconds) {
-  // printf("Clock resume.");
+  // printf("Clock resume: %d", remaining_seconds);
 }
 
 void Clock::Pause() const {
