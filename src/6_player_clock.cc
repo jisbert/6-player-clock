@@ -9,9 +9,11 @@
 
 #include "button/button.h"
 #include "button/button_controller.h"
+#include "led/led.h"
 
 int main() {
   stdio_init_all();
+  led::SetupLeds();
   ButtonController button_controller;
   button::SetupButtons(button_controller);
 

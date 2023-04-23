@@ -18,7 +18,7 @@ void button::SetupButtons(ButtonController& button_controller) {
                                   kPlayer3ButtonPin,
                                   kPlayer4ButtonPin,
                                   kPlayer5ButtonPin,
-                                  kPlayer6ButtonPin }) {
+                                  kPlayer6ButtonPin, }) {
     gpio_init(player_button_pin);
     gpio_pull_up(player_button_pin);
     gpio_set_irq_enabled(player_button_pin, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true);

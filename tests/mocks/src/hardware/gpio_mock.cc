@@ -25,6 +25,12 @@ void gpio_put(unsigned int gpio, bool value) {
     .withParameter("value", value);
 }
 
+void gpio_set_dir(unsigned int gpio, bool out) {
+  mock("gpio").actualCall("gpio_set_dir")
+    .withParameter("gpio", gpio)
+    .withParameter("out", out);
+}
+
 // TODO(jgisbert): Implement gpio_irq_callback_t comparator
 void gpio_set_irq_callback(gpio_irq_callback_t callback) {
   mock("gpio").actualCall("gpio_set_irq_callback");

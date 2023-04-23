@@ -45,6 +45,7 @@ target_sources(components INTERFACE
   src/buzzer/buzzer.cc
   src/clock/clock.cc
   src/display/display.cc
+  src/led/led.cc
   src/player/context_switcher.cc
   src/player/player_context.cc
 )
