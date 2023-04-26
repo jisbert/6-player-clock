@@ -7,21 +7,15 @@
 
 #include <cstdint>
 
-// #include "pico/stdlib.h"
-
 #include "buzzer/buzzer.h"
 #include "display/display.h"
 #include "player/player_context.h"
 
 Clock::Clock(Display& display, Buzzer& buzzer): display_(display), buzzer_(buzzer) {}
 
-void Clock::Resume(std::uint32_t remaining_seconds) {
-  // printf("Clock resume: %d", remaining_seconds);
-}
+void Clock::Resume(std::uint32_t remaining_seconds) {}
 
-void Clock::Pause() const {
-  // printf("Clock pause.");
-}
+void Clock::Pause() const {}
 
 std::uint32_t Clock::remaining_seconds() const {
   return remaining_seconds_;
