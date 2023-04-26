@@ -11,7 +11,7 @@
 #include "display/display.h"
 #include "player/player_context.h"
 
-Clock::Clock(Display& display, Buzzer& buzzer): display_(display), buzzer_(buzzer) {}
+Clock::Clock(Display* display, Buzzer* buzzer): display_(display), buzzer_(buzzer) {}
 
 void Clock::Resume(std::uint32_t remaining_seconds) {}
 

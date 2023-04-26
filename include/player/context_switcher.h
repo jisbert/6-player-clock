@@ -16,11 +16,10 @@
 
 class ContextSwitcher : public ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
-  // TODO(jisbert): Can be clock passed like this const Clock& clock
-  ContextSwitcher(Clock& clock, std::uint32_t initial_time);  // NOLINT(*)
+  ContextSwitcher(Clock* clock, std::uint32_t initial_time);
   void HandlePressed(std::uint16_t button_pin) final;
  private:  // editorconfig-checker-disable-line
-  Clock& clock_;
+  Clock* clock_;
   std::unordered_map<std::uint16_t, PlayerContext> player_context_map_;
   PlayerContext* last_player_context_;
   void UpdateLastPlayerRemainingSeconds();

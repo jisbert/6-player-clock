@@ -14,13 +14,13 @@
 
 class Clock {
  public:  // editorconfig-checker-disable-line
-  Clock(Display& display, Buzzer& buzzer);  // NOLINT(runtime/references)
+  Clock(Display* display, Buzzer* buzzer);
   void Pause() const;
   void Resume(std::uint32_t remaining_seconds);
   std::uint32_t remaining_seconds() const;
  private:  // editorconfig-checker-disable-line
-  const Buzzer& buzzer_;
-  const Display& display_;
+  const Buzzer* buzzer_;
+  const Display* display_;
   std::uint32_t remaining_seconds_;
 };
 

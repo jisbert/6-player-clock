@@ -17,7 +17,7 @@
 #include "player/player_context.h"
 
 ContextSwitcher::ContextSwitcher(
-    Clock& clock,
+    Clock* clock,
     std::uint32_t initial_time) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
   player_context_map_ = {
     {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, initial_time}},
@@ -30,8 +30,8 @@ ContextSwitcher::ContextSwitcher(
 }
 
 void ContextSwitcher::UpdateLastPlayerRemainingSeconds() {
-  clock_.Pause();
-  last_player_context_->remaining_seconds(clock_.remaining_seconds());
+  clock_->Pause();
+  last_player_context_->remaining_seconds(clock_->remaining_seconds());
 }
 
 void ContextSwitcher::SwitchContext(std::uint16_t button_pin) {
@@ -52,7 +52,7 @@ void ContextSwitcher::SwitchLed(std::uint16_t clearing_led_pin, std::uint16_t se
 }
 
 void ContextSwitcher::ResumeClock() {
-  clock_.Resume(last_player_context_->remaining_seconds());
+  clock_->Resume(last_player_context_->remaining_seconds());
 }
 
 void ContextSwitcher::HandlePressed(std::uint16_t button_pin) {
