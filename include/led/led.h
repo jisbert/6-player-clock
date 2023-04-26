@@ -9,13 +9,13 @@
 #include <cstdint>
 
 namespace led {
-  constexpr std::uint16_t kUndefinedLedPin = 0;
-  constexpr std::uint16_t kPlayer1LedPin = 11;
-  constexpr std::uint16_t kPlayer2LedPin = 12;
-  constexpr std::uint16_t kPlayer3LedPin = 13;
-  constexpr std::uint16_t kPlayer4LedPin = 14;
-  constexpr std::uint16_t kPlayer5LedPin = 15;
-  constexpr std::uint16_t kPlayer6LedPin = 16;
+  constexpr std::uint16_t kUndefinedLedPin = 50;
+  constexpr std::uint16_t kPlayer1LedPin = 2;
+  constexpr std::uint16_t kPlayer2LedPin = 3;
+  constexpr std::uint16_t kPlayer3LedPin = 4;
+  constexpr std::uint16_t kPlayer4LedPin = 5;
+  constexpr std::uint16_t kPlayer5LedPin = 6;
+  constexpr std::uint16_t kPlayer6LedPin = 7;
 
   void SetupLeds();
 }  // namespace led

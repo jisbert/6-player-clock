@@ -9,13 +9,13 @@
 #include "button/button_controller.h"
 
 namespace button {
-  constexpr std::uint16_t kUndefinedButtonPin = 0;
+  constexpr std::uint16_t kUndefinedButtonPin = 50;
   constexpr std::uint16_t kPlayer1ButtonPin = 20;
   constexpr std::uint16_t kPlayer2ButtonPin = 21;
   constexpr std::uint16_t kPlayer3ButtonPin = 22;
-  constexpr std::uint16_t kPlayer4ButtonPin = 23;
-  constexpr std::uint16_t kPlayer5ButtonPin = 24;
-  constexpr std::uint16_t kPlayer6ButtonPin = 25;
+  constexpr std::uint16_t kPlayer4ButtonPin = 8;
+  constexpr std::uint16_t kPlayer5ButtonPin = 9;
+  constexpr std::uint16_t kPlayer6ButtonPin = 10;
 
   void SetupButtons(ButtonController& button_controller_);  // NOLINT(runtime/references)
 }  // namespace button
