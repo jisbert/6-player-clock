@@ -7,10 +7,4 @@
 
 #include <cstdint>
 
-#include "stdio.h"  // NOLINT(build/include_subdir)
-
-#include "pico/stdlib.h"
-
-void Display::ShowAsMinutesAndSeconds(std::uint16_t seconds) {
-  
-}
+void Display::ShowAsMinutesAndSeconds(std::uint16_t seconds) {}
