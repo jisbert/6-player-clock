@@ -42,7 +42,7 @@ target_sources(components INTERFACE
   src/button/button_controller.cc
   src/button/button_event.cc
   src/button/button_event_handler.cc
-  src/buzzer/buzzer.cc
+  src/buzzer/buzzer_uart.cc
   src/clock/clock.cc
   src/display/display.cc
   src/led/led.cc
