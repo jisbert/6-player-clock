@@ -18,7 +18,8 @@
 
 ContextSwitcher::ContextSwitcher(
     Clock* clock,
-    std::uint16_t starting_number_of_seconds) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
+    std::uint16_t starting_number_of_seconds) :
+    clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
   player_context_map_ = {
     {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, starting_number_of_seconds}},
     {button::kPlayer2ButtonPin, {led::kPlayer2LedPin, starting_number_of_seconds}},
