@@ -13,10 +13,13 @@
 
 Clock::Clock(Display* display, Buzzer* buzzer): display_(display), buzzer_(buzzer) {}
 
-void Clock::Resume(std::uint32_t remaining_seconds) {}
+void Clock::Resume(std::uint16_t remaining_seconds) {
+  display_->ShowAsMinutesAndSeconds(remaining_seconds_);
+  buzzer_->Beep();
+}
 
-void Clock::Pause() const {}
+void Clock::Pause() {}
 
-std::uint32_t Clock::remaining_seconds() const {
+std::uint16_t Clock::remaining_seconds() {
   return remaining_seconds_;
 }

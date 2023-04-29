@@ -10,7 +10,7 @@
 
 class Display {
  public:  // editorconfig-checker-disable-line
-  void Show(std::uint32_t digits[4]);
+  void ShowAsMinutesAndSeconds(std::uint16_t seconds);
 };
 
 #endif  // DISPLAY_DISPLAY_H_

@@ -15,13 +15,13 @@
 class Clock {
  public:  // editorconfig-checker-disable-line
   Clock(Display* display, Buzzer* buzzer);
-  void Pause() const;
-  void Resume(std::uint32_t remaining_seconds);
-  std::uint32_t remaining_seconds() const;
+  void Pause();
+  void Resume(std::uint16_t remaining_seconds);
+  std::uint16_t remaining_seconds();
  private:  // editorconfig-checker-disable-line
-  const Buzzer* buzzer_;
-  const Display* display_;
-  std::uint32_t remaining_seconds_;
+  Buzzer* buzzer_;
+  Display* display_;
+  std::uint16_t remaining_seconds_;
 };
 
 #endif  // CLOCK_CLOCK_H_

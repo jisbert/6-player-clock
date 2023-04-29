@@ -18,14 +18,14 @@
 
 ContextSwitcher::ContextSwitcher(
     Clock* clock,
-    std::uint32_t initial_time) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
+    std::uint16_t starting_number_of_seconds) : clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
   player_context_map_ = {
-    {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, initial_time}},
-    {button::kPlayer2ButtonPin, {led::kPlayer2LedPin, initial_time}},
-    {button::kPlayer3ButtonPin, {led::kPlayer3LedPin, initial_time}},
-    {button::kPlayer4ButtonPin, {led::kPlayer4LedPin, initial_time}},
-    {button::kPlayer5ButtonPin, {led::kPlayer5LedPin, initial_time}},
-    {button::kPlayer6ButtonPin, {led::kPlayer6LedPin, initial_time}},
+    {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, starting_number_of_seconds}},
+    {button::kPlayer2ButtonPin, {led::kPlayer2LedPin, starting_number_of_seconds}},
+    {button::kPlayer3ButtonPin, {led::kPlayer3LedPin, starting_number_of_seconds}},
+    {button::kPlayer4ButtonPin, {led::kPlayer4LedPin, starting_number_of_seconds}},
+    {button::kPlayer5ButtonPin, {led::kPlayer5LedPin, starting_number_of_seconds}},
+    {button::kPlayer6ButtonPin, {led::kPlayer6LedPin, starting_number_of_seconds}},
   };
 }
 

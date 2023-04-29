@@ -11,13 +11,13 @@
 class PlayerContext {
  public:  // editorconfig-checker-disable-line
   static PlayerContext default_player_context_;
-  PlayerContext(std::uint32_t led_pin, std::uint32_t remaining_seconds);
+  PlayerContext(std::uint16_t led_pin, std::uint16_t remaining_seconds);
   std::int16_t led_pin();
-  std::uint32_t remaining_seconds();
-  void remaining_seconds(std::uint32_t remaining_seconds);
+  std::uint16_t remaining_seconds();
+  void remaining_seconds(std::uint16_t remaining_seconds);
  private:  // editorconfig-checker-disable-line
-  const std::uint32_t led_pin_;
-  std::uint32_t remaining_seconds_;
+  const std::uint16_t led_pin_;
+  std::uint16_t remaining_seconds_;
 };
 
 #endif  // PLAYER_PLAYER_CONTEXT_H_

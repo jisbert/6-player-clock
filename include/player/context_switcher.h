@@ -16,7 +16,7 @@
 
 class ContextSwitcher : public ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
-  ContextSwitcher(Clock* clock, std::uint32_t initial_time);
+  ContextSwitcher(Clock* clock, std::uint16_t starting_number_of_seconds);
   void HandlePressed(std::uint16_t button_pin) final;
  private:  // editorconfig-checker-disable-line
   Clock* clock_;
