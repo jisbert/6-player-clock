@@ -6,10 +6,16 @@
 #ifndef BUZZER_BUZZER_H_
 #define BUZZER_BUZZER_H_
 
+#include <cstdint>
+
+namespace buzzer {
+  constexpr std::uint16_t kBuzzerPin = 18;
+} // namespace buzzer
+
 class Buzzer {
-  const unsigned int gpio_;
+  const unsigned int buzzer_pin_;
  public:  // editorconfig-checker-disable-line
-  explicit Buzzer(unsigned int gpio);
+  explicit Buzzer(unsigned int buzzer_pin);
   void Beep();
 };
 

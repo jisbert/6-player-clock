@@ -9,7 +9,7 @@
 
 #include "pico/stdlib.h"
 
-Buzzer::Buzzer(unsigned int gpio): gpio_(gpio) {}
+Buzzer::Buzzer(unsigned int buzzer_pin): buzzer_pin_(buzzer_pin) {}
 
 void Buzzer::Beep() {
   printf("Beep\n");
