@@ -28,7 +28,11 @@ bool Clock::Resume(std::uint16_t remaining_seconds) {
   if (remaining_seconds_ > 0) {
     buzzer_->Beep();
 
-    return add_repeating_timer_ms(clock_clock::k1SecondDelayInMs, Clock::RepeatingTimerCallback, this, &repeating_timer_);
+    return add_repeating_timer_ms(
+      clock_clock::k1SecondDelayInMs,
+      Clock::RepeatingTimerCallback,
+      this,
+      &repeating_timer_);
   } else {
     buzzer_->Beep(2);
 
