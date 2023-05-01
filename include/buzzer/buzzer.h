@@ -13,10 +13,11 @@ namespace buzzer {
 } // namespace buzzer
 
 class Buzzer {
-  const unsigned int buzzer_pin_;
  public:  // editorconfig-checker-disable-line
   explicit Buzzer(unsigned int buzzer_pin);
   void Beep();
+ private:  // editorconfig-checker-disable-line
+  const unsigned int buzzer_pin_;
 };
 
 #endif  // BUZZER_BUZZER_H_
