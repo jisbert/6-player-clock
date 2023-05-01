@@ -16,6 +16,7 @@ class Buzzer {
  public:  // editorconfig-checker-disable-line
   explicit Buzzer(unsigned int buzzer_pin);
   virtual void Beep();
+  virtual void Beep(std::uint16_t number_of_beeps);
  private:  // editorconfig-checker-disable-line
   const unsigned int buzzer_pin_;
 };

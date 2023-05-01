@@ -5,12 +5,19 @@
 
 #include "buzzer/buzzer.h"
 
+#include <cstdint>
 #include <cstdio>
 
 #include "pico/stdlib.h"
 
 Buzzer::Buzzer(unsigned int buzzer_pin): buzzer_pin_(buzzer_pin) {}
 
+void Buzzer::Beep(std::uint16_t number_of_beeps) {
+  for (int index = 0; index < number_of_beeps; index++) {
+    printf("Beep\n");
+  }
+}
+
 void Buzzer::Beep() {
-  printf("Beep\n");
+  Beep(1);
 }
