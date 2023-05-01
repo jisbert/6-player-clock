@@ -11,11 +11,12 @@
 #include "display/display.h"
 #include "player/player_context.h"
 
-Clock::Clock(Display* display, Buzzer* buzzer): display_(display), buzzer_(buzzer) {}
+Clock::Clock(Buzzer* buzzer, Display* display): buzzer_(buzzer), display_(display) {}
 
 void Clock::Resume(std::uint16_t remaining_seconds) {
-  display_->ShowAsMinutesAndSeconds(remaining_seconds_);
   buzzer_->Beep();
+  display_->ShowAsMinutesAndSeconds(remaining_seconds);
+  remaining_seconds_ = remaining_seconds;
 }
 
 void Clock::Pause() {}

@@ -14,7 +14,7 @@
 
 class Clock {
  public:  // editorconfig-checker-disable-line
-  Clock(Display* display, Buzzer* buzzer);
+  Clock(Buzzer* buzzer, Display* display);
   virtual void Pause();
   virtual void Resume(std::uint16_t remaining_seconds);
   virtual std::uint16_t remaining_seconds();

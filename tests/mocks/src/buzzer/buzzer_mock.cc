@@ -7,6 +7,8 @@
 
 #include "CppUTestExt/MockSupport.h"
 
+BuzzerMock::BuzzerMock() : Buzzer(buzzer::kBuzzerPin) {}
+
 void BuzzerMock::Beep() {
   mock("buzzer").actualCall("Beep");
 }

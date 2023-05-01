@@ -12,7 +12,7 @@
 
 class DisplayMock : public Display {
  public:  // editorconfig-checker-disable-line
-  void ShowAsMinutesAndSeconds(std::uint16_t seconds);
+  void ShowAsMinutesAndSeconds(std::uint16_t seconds) final;
 };
 
 #endif  // DISPLAY_DISPLAY_MOCK_H_

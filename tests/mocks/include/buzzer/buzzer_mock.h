@@ -10,7 +10,8 @@
 
 class BuzzerMock : public Buzzer {
  public:  // editorconfig-checker-disable-line
-  void Beep();
+  BuzzerMock();
+  void Beep() final;
 };
 
 #endif  // BUZZER_BUZZER_MOCK_H_

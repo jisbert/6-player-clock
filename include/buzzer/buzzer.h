@@ -15,7 +15,7 @@ namespace buzzer {
 class Buzzer {
  public:  // editorconfig-checker-disable-line
   explicit Buzzer(unsigned int buzzer_pin);
-  void Beep();
+  virtual void Beep();
  private:  // editorconfig-checker-disable-line
   const unsigned int buzzer_pin_;
 };
