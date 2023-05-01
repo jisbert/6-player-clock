@@ -25,6 +25,11 @@ void gpio_put(unsigned int gpio, bool value) {
     .withParameter("value", value);
 }
 
+void gpio_put_all(uint32_t value) {
+  mock("gpio").actualCall("gpio_put_all")
+    .withParameter("value", value);
+}
+
 void gpio_set_dir(unsigned int gpio, bool out) {
   mock("gpio").actualCall("gpio_set_dir")
     .withParameter("gpio", gpio)
