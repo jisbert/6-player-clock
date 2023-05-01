@@ -34,9 +34,14 @@ TEST_GROUP(ContextSwitcher) {
   void teardown() {
     delete context_switcher_;
     delete clock_;
+    delete led_;
   }
 };
 
 TEST(ContextSwitcher, HandlePressed) {
-  FAIL("Not yet implemented");
+  mock("clock").expectOneCall("Pause");
+  mock("clock").expectOneCall("remaining_seconds");
+  mock("led").expectOneCall("SwitchOnOnly").withParameter("led_pin", led::kPlayer1LedPin);
+  mock("clock").expectOneCall("Resume").withParameter("remaining_seconds", context_switcher_tests::kStartingNumberOfSeconds);
+  context_switcher_->HandlePressed(button::kPlayer1ButtonPin);
 }

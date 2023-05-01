@@ -41,17 +41,9 @@ void ContextSwitcher::SwitchContext(std::uint16_t button_pin) {
 
   if (iterator != player_context_map_.end()) {
     last_player_context_ = &iterator->second;
-    SwitchOnOnlyLed(last_player_context_->led_pin());
-    ResumeClock();
+    led_->SwitchOnOnly(last_player_context_->led_pin());
+    clock_->Resume(last_player_context_->remaining_seconds());
   }
-}
-
-void ContextSwitcher::SwitchOnOnlyLed(std::uint16_t led_pin) {
-  led_->SwitchOnOnly(led_pin);
-}
-
-void ContextSwitcher::ResumeClock() {
-  clock_->Resume(last_player_context_->remaining_seconds());
 }
 
 void ContextSwitcher::HandlePressed(std::uint16_t button_pin) {

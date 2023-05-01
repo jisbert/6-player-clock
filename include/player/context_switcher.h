@@ -26,8 +26,6 @@ class ContextSwitcher : public ButtonEventHandler {
   PlayerContext* last_player_context_;
   void UpdateLastPlayerRemainingSeconds();
   void SwitchContext(std::uint16_t button_pin);
-  void SwitchOnOnlyLed(std::uint16_t led_pin);
-  void ResumeClock();
 };
 
 #endif  // PLAYER_CONTEXT_SWITCHER_H_
