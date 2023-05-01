@@ -21,7 +21,7 @@ int main() {
   Led led;
   Buzzer buzzer{buzzer::kBuzzerPin};
   Display display;
-  Clock clock{&display, &buzzer};
+  Clock clock{&buzzer, &display};
   ContextSwitcher context_switcher{&led, &clock, 1000};
   button_controller.button_event_handler(&context_switcher);
 
