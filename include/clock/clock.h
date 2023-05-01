@@ -8,9 +8,16 @@
 
 #include <cstdint>
 
+#include "pico/time.h"
+
 #include "buzzer/buzzer.h"
 #include "display/display.h"
 #include "player/player_context.h"
+
+namespace clock_clock {
+  constexpr std::int16_t k1SecondDelayInMs = -1000;
+}  // namespace clock_clock
+
 
 class Clock {
  public:  // editorconfig-checker-disable-line
@@ -21,7 +28,9 @@ class Clock {
  private:  // editorconfig-checker-disable-line
   Buzzer* buzzer_;
   Display* display_;
+  repeating_timer_t* repeating_timer_;
   std::uint16_t remaining_seconds_;
+  static bool RepeatingTimerCallback(repeating_timer_t* repeating_timer);
 };
 
 #endif  // CLOCK_CLOCK_H_
