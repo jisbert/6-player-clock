@@ -12,7 +12,7 @@
 
 namespace clock_mock {
   constexpr std::uint16_t kRemainingSeconds = 5;
-} // namespace clock_mock
+}  // namespace clock_mock
 
 
 class ClockMock : public Clock {

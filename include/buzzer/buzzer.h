@@ -10,7 +10,7 @@
 
 namespace buzzer {
   constexpr std::uint16_t kBuzzerPin = 18;
-} // namespace buzzer
+}  // namespace buzzer
 
 class Buzzer {
  public:  // editorconfig-checker-disable-line

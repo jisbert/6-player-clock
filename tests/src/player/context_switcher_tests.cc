@@ -17,7 +17,7 @@
 
 namespace context_switcher_tests {
   constexpr std::uint16_t kStartingNumberOfSeconds = 1000;
-} // namespace context_switcher_tests
+}  // namespace context_switcher_tests
 
 
 TEST_GROUP(ContextSwitcher) {
@@ -42,6 +42,7 @@ TEST(ContextSwitcher, HandlePressed) {
   mock("clock").expectOneCall("Pause");
   mock("clock").expectOneCall("remaining_seconds");
   mock("led").expectOneCall("SwitchOnOnly").withParameter("led_pin", led::kPlayer1LedPin);
-  mock("clock").expectOneCall("Resume").withParameter("remaining_seconds", context_switcher_tests::kStartingNumberOfSeconds);
+  mock("clock").expectOneCall("Resume")
+    .withParameter("remaining_seconds", context_switcher_tests::kStartingNumberOfSeconds);
   context_switcher_->HandlePressed(button::kPlayer1ButtonPin);
 }
