@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
 
-# Use cpplint
-set(CMAKE_CXX_CPPLINT "cpplint")
-
 # Set board to pico
 set(PICO_BOARD pico CACHE STRING "Board type")
 
@@ -35,33 +32,33 @@ pico_sdk_init()
 add_library(compiler_flags INTERFACE)
 target_compile_definitions(compiler_flags INTERFACE c_std_11 cxx_std_17)
 
-add_library(headers INTERFACE)
-target_include_directories(headers INTERFACE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/button
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/buzzer
+add_library(components INTERFACE)
+target_link_libraries(components INTERFACE compiler_flags)
+target_include_directories(components INTERFACE
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-target_link_libraries(headers INTERFACE compiler_flags)
-
-add_library(sources INTERFACE)
-target_sources(sources INTERFACE
+target_sources(components INTERFACE
+  src/button/button.cc
   src/button/button_controller.cc
   src/button/button_event.cc
-  src/button/button_handler.cc
-  src/buzzer/buzzer.cc
+  src/button/button_event_handler.cc
+  src/buzzer/buzzer_printf.cc
+  src/clock/clock.cc
+  src/display/display_printf.cc
+  src/led/led.cc
+  src/player/context_switcher.cc
+  src/player/player_context.cc
 )
-target_link_libraries(sources INTERFACE compiler_flags)
 
-add_executable(6_player_clock src/app.cc)
-target_include_directories(6_player_clock PRIVATE
-  ${CMAKE_CURRENT_LIST_DIR}
-  ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
-  ${CMAKE_CURRENT_LIST_DIR}/src
-)
+add_executable(6_player_clock src/6_player_clock.cc)
 target_link_libraries(6_player_clock
   compiler_flags
   pico_stdlib
-  headers
-  sources
+  components
+)
+target_include_directories(6_player_clock PRIVATE
+  ${CMAKE_CURRENT_LIST_DIR}
+  ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
 )
 
 pico_set_program_name(6_player_clock "6_player_clock")

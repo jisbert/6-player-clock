@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "./button_event.h"
+#include "button/button_event.h"
 
 ButtonEvent::ButtonEvent(unsigned int gpio): gpio_(gpio) {}
 
