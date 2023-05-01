@@ -17,9 +17,10 @@
 #include "player/player_context.h"
 
 ContextSwitcher::ContextSwitcher(
+    Led* led,
     Clock* clock,
     std::uint16_t starting_number_of_seconds) :
-    clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
+    led_(led), clock_(clock), last_player_context_(&PlayerContext::default_player_context_) {
   player_context_map_ = {
     {button::kPlayer1ButtonPin, {led::kPlayer1LedPin, starting_number_of_seconds}},
     {button::kPlayer2ButtonPin, {led::kPlayer2LedPin, starting_number_of_seconds}},
@@ -39,17 +40,14 @@ void ContextSwitcher::SwitchContext(std::uint16_t button_pin) {
   auto iterator = player_context_map_.find(button_pin);
 
   if (iterator != player_context_map_.end()) {
-    std::uint16_t clearing_led_pin = last_player_context_->led_pin();
     last_player_context_ = &iterator->second;
-    std::uint16_t setting_led_pin = last_player_context_->led_pin();
-    SwitchLed(clearing_led_pin, setting_led_pin);
+    SwitchOnOnlyLed(last_player_context_->led_pin());
     ResumeClock();
   }
 }
 
-void ContextSwitcher::SwitchLed(std::uint16_t clearing_led_pin, std::uint16_t setting_lend_pin) {
-  gpio_put(clearing_led_pin, false);
-  gpio_put(setting_lend_pin, true);
+void ContextSwitcher::SwitchOnOnlyLed(std::uint16_t led_pin) {
+  led_->SwitchOnOnly(led_pin);
 }
 
 void ContextSwitcher::ResumeClock() {

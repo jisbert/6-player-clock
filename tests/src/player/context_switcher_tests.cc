@@ -12,6 +12,8 @@
 
 #include "clock/clock.h"
 #include "clock/clock_mock.h"
+#include "led/led.h"
+#include "led/led_mock.h"
 
 namespace context_switcher_tests {
   constexpr std::uint16_t kStartingNumberOfSeconds = 1000;
@@ -19,12 +21,14 @@ namespace context_switcher_tests {
 
 
 TEST_GROUP(ContextSwitcher) {
-  ContextSwitcher* context_switcher_;
+  Led* led_;
   Clock* clock_;
+  ContextSwitcher* context_switcher_;
 
   void setup() {
+    led_ = new LedMock();
     clock_ = new ClockMock();
-    context_switcher_ = new ContextSwitcher(clock_, context_switcher_tests::kStartingNumberOfSeconds);
+    context_switcher_ = new ContextSwitcher(led_, clock_, context_switcher_tests::kStartingNumberOfSeconds);
   }
 
   void teardown() {

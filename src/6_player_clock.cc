@@ -18,10 +18,11 @@ int main() {
   led::SetupLeds();
   ButtonController button_controller;
   button::SetupButtons(button_controller);
+  Led led;
   Buzzer buzzer{buzzer::kBuzzerPin};
   Display display;
   Clock clock{&display, &buzzer};
-  ContextSwitcher context_switcher{&clock, 1000};
+  ContextSwitcher context_switcher{&led, &clock, 1000};
   button_controller.button_event_handler(&context_switcher);
 
   while (true) {
