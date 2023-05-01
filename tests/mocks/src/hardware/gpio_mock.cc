@@ -5,6 +5,8 @@
 
 #include "hardware/gpio.h"
 
+#include <cstdint>
+
 #include "CppUTestExt/MockSupport.h"
 
 void gpio_init(unsigned int gpio) {
@@ -25,8 +27,14 @@ void gpio_put(unsigned int gpio, bool value) {
     .withParameter("value", value);
 }
 
-void gpio_put_all(uint32_t value) {
+void gpio_put_all(std::uint32_t value) {
   mock("gpio").actualCall("gpio_put_all")
+    .withParameter("value", value);
+}
+
+void gpio_put_masked(std::uint32_t mask, std::uint32_t value) {
+  mock("gpio").actualCall("gpio_put_masked")
+    .withParameter("mask", mask)
     .withParameter("value", value);
 }
 

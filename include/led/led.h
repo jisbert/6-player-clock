@@ -16,6 +16,7 @@ namespace led {
   constexpr std::uint16_t kPlayer4LedPin = 5;
   constexpr std::uint16_t kPlayer5LedPin = 6;
   constexpr std::uint16_t kPlayer6LedPin = 7;
+  constexpr std::uint32_t kPlayerLedPinMask = 0b00000000000000000000000011111100;
 
   void SetupLeds();
 }  // namespace led

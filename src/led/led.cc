@@ -24,5 +24,5 @@ void led::SetupLeds() {
 
 void Led::SwitchOnOnly(std::uint16_t led_pin) const {
   std::uint32_t value = 1 << led_pin;
-  gpio_put_all(value);
+  gpio_put_masked(led::kPlayerLedPinMask, value);
 }
