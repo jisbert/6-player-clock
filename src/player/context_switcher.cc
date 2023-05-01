@@ -32,8 +32,9 @@ ContextSwitcher::ContextSwitcher(
 }
 
 void ContextSwitcher::UpdateLastPlayerRemainingSeconds() {
-  clock_->Pause();
-  last_player_context_->remaining_seconds(clock_->remaining_seconds());
+  if (clock_->Pause()) {
+    last_player_context_->remaining_seconds(clock_->remaining_seconds());
+  }
 }
 
 void ContextSwitcher::SwitchContext(std::uint16_t button_pin) {

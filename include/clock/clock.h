@@ -28,7 +28,7 @@ class Clock {
  private:  // editorconfig-checker-disable-line
   Buzzer* buzzer_;
   Display* display_;
-  repeating_timer_t* repeating_timer_;
+  repeating_timer_t repeating_timer_;
   std::uint16_t remaining_seconds_;
   static bool RepeatingTimerCallback(repeating_timer_t* repeating_timer);
 };
