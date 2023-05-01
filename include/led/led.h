@@ -20,5 +20,9 @@ namespace led {
   void SetupLeds();
 }  // namespace led
 
+class Led {
+ public:  // editorconfig-checker-disable-line
+  virtual void SwitchOnOnly(std::uint16_t led_pin) const;
+};
 
 #endif  // LED_LED_H_

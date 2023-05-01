@@ -5,6 +5,7 @@
 
 #include "led/led.h"
 
+#include <cstdint>
 #include <initializer_list>
 
 #include "hardware/gpio.h"
@@ -19,4 +20,9 @@ void led::SetupLeds() {
     gpio_init(player_led_pin);
     gpio_set_dir(player_led_pin, true);
   }
+}
+
+void Led::SwitchOnOnly(std::uint16_t led_pin) const {
+  std::uint32_t value = 1 << led_pin;
+  gpio_put_all(value);
 }
