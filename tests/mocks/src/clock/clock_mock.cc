@@ -9,12 +9,18 @@
 
 ClockMock::ClockMock() : Clock(nullptr, nullptr) {}
 
-void ClockMock::Pause() {
+// TODO(jisbert): return expected value
+bool ClockMock::Pause() {
   mock("clock").actualCall("Pause");
+
+  return true;
 }
 
-void ClockMock::Resume(std::uint16_t remaining_seconds) {
+// TODO(jisbert): return expected value
+bool ClockMock::Resume(std::uint16_t remaining_seconds) {
   mock("clock").actualCall("Resume").withParameter("remaining_seconds", remaining_seconds);
+
+  return true;
 }
 
 std::uint16_t ClockMock::remaining_seconds() {

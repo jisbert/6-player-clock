@@ -20,22 +20,32 @@ bool Clock::RepeatingTimerCallback(repeating_timer_t* repeating_timer) {
   return --(clock->remaining_seconds_) >= 0;
 }
 
-Clock::Clock(Buzzer* buzzer, Display* display): buzzer_(buzzer), display_(display) {}
+Clock::Clock(Buzzer* buzzer, Display* display): buzzer_(buzzer), display_(display), remaining_seconds_(0) {}
 
-void Clock::Resume(std::uint16_t remaining_seconds) {
+bool Clock::Resume(std::uint16_t remaining_seconds) {
   remaining_seconds_ = remaining_seconds;
 
   if (remaining_seconds_ > 0) {
     buzzer_->Beep();
     add_repeating_timer_ms(clock_clock::k1SecondDelayInMs, Clock::RepeatingTimerCallback, this, repeating_timer_);
+
+    return true;
   } else {
     buzzer_->Beep(2);
+
+    return false;
   }
 }
 
-void Clock::Pause() {
-  cancel_repeating_timer(repeating_timer_);
-  repeating_timer_ = nullptr;
+bool Clock::Pause() {
+  if (repeating_timer_ != nullptr) {
+    cancel_repeating_timer(repeating_timer_);
+    repeating_timer_ = nullptr;
+
+    return true;
+  } else {
+    return false;
+  }
 }
 
 std::uint16_t Clock::remaining_seconds() {

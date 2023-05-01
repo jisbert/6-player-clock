@@ -22,8 +22,8 @@ namespace clock_clock {
 class Clock {
  public:  // editorconfig-checker-disable-line
   Clock(Buzzer* buzzer, Display* display);
-  virtual void Pause();
-  virtual void Resume(std::uint16_t remaining_seconds);
+  virtual bool Pause();
+  virtual bool Resume(std::uint16_t remaining_seconds);
   virtual std::uint16_t remaining_seconds();
  private:  // editorconfig-checker-disable-line
   Buzzer* buzzer_;

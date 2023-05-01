@@ -18,8 +18,8 @@ namespace clock_mock {
 class ClockMock : public Clock {
  public:  // editorconfig-checker-disable-line
   ClockMock();
-  void Pause() final;
-  void Resume(std::uint16_t remaining_seconds) final;
+  bool Pause() final;
+  bool Resume(std::uint16_t remaining_seconds) final;
   std::uint16_t remaining_seconds() final;
 };
 
