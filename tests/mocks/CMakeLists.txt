@@ -11,4 +11,5 @@ target_sources(mocks INTERFACE
   src/hardware/gpio_mock.cc
   src/hardware/irq_mock.cc
   src/led/led_mock.cc
+  src/pico/time_mock.cc
 )
