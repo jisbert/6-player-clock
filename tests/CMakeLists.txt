@@ -21,6 +21,7 @@ if(ENABLE_COVERAGE)
     DEPENDENCIES tests
     BASE_DIRECTORY ${PROJECT_SOURCE_DIR}
     EXCLUDE tests/* /usr/*
+    LCOV_ARGS --ignore-errors mismatch # Ignore errors from CppUTest
   )
 endif()
 add_subdirectory(mocks)
