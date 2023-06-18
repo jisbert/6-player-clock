@@ -41,3 +41,14 @@ jobs:
           path: |
             build/*.elf
             build/*.uf2
+
+      - name: Code documentation
+        run: |
+          doxygen .doxygen
+
+      - name: Archive code documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-documentation
+          path: |
+            docs/html
