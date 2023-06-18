@@ -18,9 +18,10 @@
 class ContextSwitcher : public ButtonEventHandler {
  public:  // editorconfig-checker-disable-line
   ContextSwitcher(Led* led, Clock* clock, std::uint16_t starting_number_of_seconds);
-  /// doxygen: \fn void HandlePressed(std::uint16_t button_pin)
-  /// \brief Switches the context to the player that pressed the button.
-  /// \param button_pin The pin of the button that was pressed.
+  /** Switches the context to the player that pressed the button.
+    * 
+    * @param button_pin The pin of the button that was pressed.
+    */
   void HandlePressed(std::uint16_t button_pin) override;
  private:  // editorconfig-checker-disable-line
   Led* led_;
