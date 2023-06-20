@@ -27,6 +27,7 @@ bool Clock::Resume(std::uint16_t remaining_seconds) {
 
   if (remaining_seconds_ > 0) {
     buzzer_->Beep();
+    // TODO(jisbert): Show remaining seconds in display.
 
     return add_repeating_timer_ms(
       clock_clock::k1SecondDelayInMs,
