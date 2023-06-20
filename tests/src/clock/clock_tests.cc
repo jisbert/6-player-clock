@@ -42,3 +42,14 @@ TEST(Clock, Resume) {
     .withParameter("seconds", clock_mock::kRemainingSeconds);
   clock_->Resume(clock_mock::kRemainingSeconds);
 }
+
+/** Test that the clock resumes from the last seen time.
+  */
+TEST(Clock, ResumeShowsLastSeenTime) {
+  mock("buzzer").expectOneCall("Beep");
+  mock("repeating_timer").expectOneCall("add_repeating_timer_ms")
+    .withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
+    .withParameter("seconds", clock_mock::kRemainingSeconds);
+  clock_->Resume(clock_mock::kRemainingSeconds);
+}
