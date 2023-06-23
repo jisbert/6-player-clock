@@ -15,9 +15,10 @@
 
 bool Clock::RepeatingTimerCallback(repeating_timer_t* repeating_timer) {
   Clock* clock = static_cast<Clock*>(repeating_timer->user_data);
+  --(clock->remaining_seconds_);
   clock->display_->ShowAsMinutesAndSeconds(clock->remaining_seconds_);
 
-  return --(clock->remaining_seconds_) >= 0;
+  return clock->remaining_seconds_ >= 0;
 }
 
 Clock::Clock(Buzzer* buzzer, Display* display): buzzer_(buzzer), display_(display), remaining_seconds_(0) {}
@@ -27,7 +28,7 @@ bool Clock::Resume(std::uint16_t remaining_seconds) {
 
   if (remaining_seconds_ > 0) {
     buzzer_->Beep();
-    // TODO(jisbert): Show remaining seconds in display.
+    display_->ShowAsMinutesAndSeconds(remaining_seconds_);
 
     return add_repeating_timer_ms(
       clock_clock::k1SecondDelayInMs,
