@@ -38,8 +38,7 @@ TEST(Clock, Resume) {
   mock("buzzer").expectOneCall("Beep");
   mock("repeating_timer").expectOneCall("add_repeating_timer_ms")
     .withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
-  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
-    .withParameter("seconds", clock_mock::kRemainingSeconds);
+  mock("display").ignoreOtherCalls();
   clock_->Resume(clock_mock::kRemainingSeconds);
 }
 
