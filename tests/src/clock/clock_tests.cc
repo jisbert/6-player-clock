@@ -46,9 +46,12 @@ TEST(Clock, Resume) {
   */
 TEST(Clock, ResumeShowsLastSeenTime) {
   mock("buzzer").expectOneCall("Beep");
-  mock("display").expectOneCall("ShowAsMinutesAndSeconds").withParameter("seconds", clock_mock::kRemainingSeconds);
-  mock("repeating_timer").expectOneCall("add_repeating_timer_ms").withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
-  mock("display").expectOneCall("ShowAsMinutesAndSeconds").withParameter("seconds", clock_mock::kRemainingSeconds - 1);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
+    .withParameter("seconds", clock_mock::kRemainingSeconds);
+  mock("repeating_timer").expectOneCall("add_repeating_timer_ms")
+    .withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
+    .withParameter("seconds", clock_mock::kRemainingSeconds - 1);
   clock_->Resume(clock_mock::kRemainingSeconds);
 }
 
