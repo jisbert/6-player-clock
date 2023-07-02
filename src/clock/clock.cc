@@ -37,6 +37,7 @@ bool Clock::Resume(std::uint16_t remaining_seconds) {
       &repeating_timer_);
   } else {
     buzzer_->Beep(2);
+    display_->ShowAsMinutesAndSeconds(0);
 
     return false;
   }

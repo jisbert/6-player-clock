@@ -46,11 +46,17 @@ TEST(Clock, Resume) {
   */
 TEST(Clock, ResumeShowsLastSeenTime) {
   mock("buzzer").expectOneCall("Beep");
-  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
-    .withParameter("seconds", clock_mock::kRemainingSeconds);
-  mock("repeating_timer").expectOneCall("add_repeating_timer_ms")
-    .withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
-  mock("display").expectOneCall("ShowAsMinutesAndSeconds")
-    .withParameter("seconds", clock_mock::kRemainingSeconds - 1);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds").withParameter("seconds", clock_mock::kRemainingSeconds);
+  mock("repeating_timer").expectOneCall("add_repeating_timer_ms").withParameter("delay_ms", clock_clock::k1SecondDelayInMs);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds").withParameter("seconds", clock_mock::kRemainingSeconds - 1);
   clock_->Resume(clock_mock::kRemainingSeconds);
+}
+
+/** Test that zero is displayed when there are no remaining seconds.
+  */
+TEST(Clock, ResumeShowsZeroWhenNoRemainingSeconds) {
+  mock("buzzer").expectOneCall("Beep").withParameter("number_of_beeps", 2);
+  mock("display").expectOneCall("ShowAsMinutesAndSeconds").withParameter("seconds", 0);
+  mock("repeating_timer").ignoreOtherCalls();
+  clock_->Resume(0);
 }
